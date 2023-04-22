@@ -10,7 +10,7 @@ public class Catapult : MonoBehaviour
     private Vector3 dragEndPosition;
     private Vector3 dragDirection;
     private float dragDistance;
-    public float maxDragDistance = 5f; // Distancia máxima permitida para arrastrar
+    public float maxDragDistance = 5f; // Distancia mï¿½xima permitida para arrastrar
     public float forceMagnitude ;
     private Rigidbody2D rb;
 
@@ -24,7 +24,7 @@ public class Catapult : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) // Si el jugador comienza a arrastrar
         {
             isDragging = true;
-            dragStartPosition = Input.mousePosition; // Guardar la posición de inicio del arrastre
+            dragStartPosition = Input.mousePosition; // Guardar la posiciï¿½n de inicio del arrastre
             projectile.transform.position = spawnPoint.position;
             rb.velocity = Vector2.zero;
             rb.gravityScale = 0;
@@ -33,9 +33,9 @@ public class Catapult : MonoBehaviour
         if (isDragging) // Si el jugador sigue arrastrando
         {
             rb.velocity = Vector2.zero;
-            dragEndPosition = Input.mousePosition; // Guardar la posición final del arrastre
+            dragEndPosition = Input.mousePosition; // Guardar la posiciï¿½n final del arrastre
             dragDistance = Vector3.Distance(dragStartPosition, dragEndPosition); // Calcular la distancia del arrastre
-            dragDistance = Mathf.Clamp(dragDistance, 0f, maxDragDistance); // Limitar la distancia máxima permitida para arrastrar
+            dragDistance = Mathf.Clamp(dragDistance, 0f, maxDragDistance); // Limitar la distancia mï¿½xima permitida para arrastrar
             dragDirection = (dragStartPosition - dragEndPosition);
             projectile.transform.position = spawnPoint.position - dragDirection.normalized ;
         }

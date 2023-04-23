@@ -38,6 +38,7 @@ public class Catapult : MonoBehaviour
             dragDistance = Mathf.Clamp(dragDistance, 0f, maxDragDistance); // Limitar la distancia m�xima permitida para arrastrar
             dragDirection = (dragStartPosition - dragEndPosition);
             projectile.transform.position = spawnPoint.position - dragDirection.normalized ;
+
         }
 
         if (Input.GetMouseButtonUp(0)) // Si el jugador suelta el arrastre

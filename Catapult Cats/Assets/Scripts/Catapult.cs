@@ -82,8 +82,8 @@ public class Catapult : MonoBehaviour
         }
         
         // update trajectory line
-        lr.SetPosition(0, spawnPoint.position);
-        DrawTrajectory(spawnPoint.position, dragDirection.normalized * forceMagnitude, rb.gravityScale, dragDistance);
+        //lr.SetPosition(0, spawnPoint.position);
+        //DrawTrajectory(spawnPoint.position, dragDirection.normalized * forceMagnitude, rb.gravityScale, dragDistance);
 
     }
     public void LaunchProyectil()

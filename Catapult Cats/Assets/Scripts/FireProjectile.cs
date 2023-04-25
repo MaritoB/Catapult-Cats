@@ -4,6 +4,7 @@ public class FireProjectile : Projectile
 {
     public float explosionForce = 100f;
     public float explosionRadius = 5f;
+    public ParticleSystem explosionPS;
 
     private void Explode()
     {
@@ -34,8 +35,9 @@ public class FireProjectile : Projectile
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        ps.Emit(30);
-        ps.gameObject.SetActive(false);
+        explosionPS.transform.position = transform.position;
+        explosionPS.Emit(40);
+        ps.Stop();
         Explode();
     }
 }

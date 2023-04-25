@@ -24,7 +24,11 @@ public class CameraController : MonoBehaviour
     }
     private void LateUpdate()
     {
-    Vector3 desiredPosition = new Vector3(
+        if (Projectile == null)
+        {
+            Projectile = cannonTransform.GetComponent<Catapult>().projectile.transform;
+        }
+        Vector3 desiredPosition = new Vector3(
             Mathf.Clamp(Projectile.position.x, minCameraX, maxCameraX),
             Mathf.Clamp(Projectile.position.y + offset, minCameraY, maxCameraY),
             Mathf.Clamp(transform.position.z, minCameraZ, maxCameraZ)

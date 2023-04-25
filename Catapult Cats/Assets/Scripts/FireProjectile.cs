@@ -34,7 +34,8 @@ public class FireProjectile : Projectile
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-
+        ps.Emit(30);
+        ps.gameObject.SetActive(false);
         Explode();
     }
 }

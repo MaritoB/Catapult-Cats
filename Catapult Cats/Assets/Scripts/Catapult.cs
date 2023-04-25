@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Catapult : MonoBehaviour
 {
-    public GameObject projectile;
+    public Projectile projectile;
     public GameObject aim;
     public Transform spawnPoint;
 
@@ -38,6 +38,7 @@ public class Catapult : MonoBehaviour
         {
             rb.angularVelocity = 0;
             projectile.gameObject.SetActive(true);
+            projectile.ps.gameObject.SetActive(true);
             projectile.transform.position = spawnPoint.position;
             isDragging = true;
             dragStartPosition = Input.mousePosition; // Guardar la posición de inicio del arrastre
@@ -87,11 +88,12 @@ public class Catapult : MonoBehaviour
     }
     public void LaunchProyectil()
     {
+        projectile.onCatapult = false;
+        projectile.ResetLifeTime();
         canShoot = true;
         isDragging = false;
         rb.gravityScale = 1;
         rb.angularVelocity = -500f;
-        projectile.GetComponent<Projectile>().ResetLifeTime();
         projectile.transform.position = spawnPoint.position;
         rb.AddForce(dragDirection * forceMagnitude * dragDistance, ForceMode2D.Impulse); // Aplicar la fuerza al proyectil
         Debug.Log("Lanzamiento " + dragDistance);

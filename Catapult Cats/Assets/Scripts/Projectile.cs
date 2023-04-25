@@ -12,6 +12,8 @@ public class Projectile : MonoBehaviour
     private float currentLifeTime = 0;
     public int damage = 1;
     public Element element;
+    public ParticleSystem ps;
+    public bool onCatapult = true;
 
     private void Awake()
     {
@@ -20,6 +22,8 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
+        ps.transform.position = transform.position;
+        if (onCatapult) return;
         currentLifeTime -= Time.deltaTime;
         if (currentLifeTime < 0)
         {
@@ -28,11 +32,11 @@ public class Projectile : MonoBehaviour
     }
     public void ResetLifeTime()
     {
-
+        ps.gameObject.SetActive(true);
         currentLifeTime = lifetime;
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-       
+
     }
 }

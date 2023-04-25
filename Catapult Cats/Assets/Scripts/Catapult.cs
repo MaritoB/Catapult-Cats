@@ -36,6 +36,9 @@ public class Catapult : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0)) // Si el jugador comienza a arrastrar
         {
+            rb.angularVelocity = 0;
+            projectile.gameObject.SetActive(true);
+            projectile.transform.position = spawnPoint.position;
             isDragging = true;
             dragStartPosition = Input.mousePosition; // Guardar la posición de inicio del arrastre
             rb.velocity = Vector2.zero;
@@ -87,6 +90,8 @@ public class Catapult : MonoBehaviour
         canShoot = true;
         isDragging = false;
         rb.gravityScale = 1;
+        rb.angularVelocity = -500f;
+        projectile.GetComponent<Projectile>().ResetLifeTime();
         projectile.transform.position = spawnPoint.position;
         rb.AddForce(dragDirection * forceMagnitude * dragDistance, ForceMode2D.Impulse); // Aplicar la fuerza al proyectil
         Debug.Log("Lanzamiento " + dragDistance);

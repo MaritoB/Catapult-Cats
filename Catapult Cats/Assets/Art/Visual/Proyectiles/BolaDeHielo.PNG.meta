@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 29ebff029cc24764f86db2e8517714d6
+guid: c3745f31f70839f478e24c0ce5dfeb44
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -52,7 +52,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0.16
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -101,26 +101,49 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites: []
-    outline: []
+    outline:
+    - - {x: 138.5, y: -232}
+      - {x: 171.5, y: -193}
+      - {x: 276.5, y: -67}
+      - {x: 278.5, y: -65}
+      - {x: 278.5, y: -47}
+      - {x: 277.5, y: -43}
+      - {x: 267.5, y: 0}
+      - {x: 266.5, y: 5}
+      - {x: 264.5, y: 18}
+      - {x: 261.5, y: 26}
+      - {x: 257.5, y: 48}
+      - {x: 250.5, y: 78}
+      - {x: 242.5, y: 107}
+      - {x: 241.5, y: 110}
+      - {x: 103.5, y: 247}
+      - {x: -94.5, y: 247}
+      - {x: -108.5, y: 234}
+      - {x: -125.5, y: 218}
+      - {x: -157.5, y: 187}
+      - {x: -158.5, y: 187}
+      - {x: -174.5, y: 172}
+      - {x: -191.5, y: 156}
+      - {x: -207.5, y: 141}
+      - {x: -224.5, y: 125}
+      - {x: -244.5, y: 106}
+      - {x: -252.5, y: 70}
+      - {x: -271.5, y: -16}
+      - {x: -278.5, y: -47}
+      - {x: -278.5, y: -65}
+      - {x: -193.5, y: -160}
+      - {x: -155.5, y: -203}
+      - {x: -125.5, y: -237}
+      - {x: -116.5, y: -247}
+      - {x: 124.5, y: -247}
+      - {x: 132.5, y: -239}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []

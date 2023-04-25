@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-  [SerializeField] private Transform playerTransform; // Objeto que seguirá la cámara
-    [SerializeField] private Transform cannonTransform; // Objeto que representa el cañón
+    private Transform Projectile; // Objeto que seguirá la cámara
+    [SerializeField] private GameObject cannonTransform; // Objeto que representa el cañón
     [SerializeField] private float smoothSpeed = 2.5f; // Velocidad de la cámara
     [SerializeField] private float offset = 3f; // Distancia de la cámara respecto al objeto que sigue
     [SerializeField] private float minCameraX = -10f; // Límite mínimo de la cámara en el eje X
@@ -18,12 +18,15 @@ public class CameraController : MonoBehaviour
 
 
     private bool isMovingFast; // Flag que indica si la cámara se está moviendo rápidamente
-
+    private void Start()
+    {
+        Projectile = cannonTransform.GetComponent<Catapult>().projectile.transform;
+    }
     private void LateUpdate()
     {
     Vector3 desiredPosition = new Vector3(
-            Mathf.Clamp(playerTransform.position.x, minCameraX, maxCameraX),
-            Mathf.Clamp(playerTransform.position.y + offset, minCameraY, maxCameraY),
+            Mathf.Clamp(Projectile.position.x, minCameraX, maxCameraX),
+            Mathf.Clamp(Projectile.position.y + offset, minCameraY, maxCameraY),
             Mathf.Clamp(transform.position.z, minCameraZ, maxCameraZ)
         );
 
@@ -38,7 +41,7 @@ public class CameraController : MonoBehaviour
         else if (isMovingFast)
         {
             isMovingFast = false;
-            Vector3 cannonPosition = cannonTransform.position;
+            Vector3 cannonPosition = cannonTransform.transform.position;
             cannonPosition.z = transform.position.z;
             transform.position = Vector3.Lerp(transform.position, cannonPosition, fastSpeed * Time.deltaTime);
         }

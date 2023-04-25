@@ -2,35 +2,46 @@ using UnityEngine;
 
 public class Catapult : MonoBehaviour
 {
-    public GameObject projectile;
+    public Projectile projectile;
     public GameObject aim;
     public Transform spawnPoint;
 
     public float maxDragDistance = 5f;
     public float forceMagnitude;
 
+    private Animator animator;
     private bool isDragging = false;
     private Vector3 dragStartPosition;
     private Vector3 dragEndPosition;
     private Vector3 dragDirection;
     private float dragDistance;
+    private bool canShoot = true;
 
     private Rigidbody2D rb;
     private LineRenderer lr;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb = projectile.GetComponent<Rigidbody2D>();
         lr = aim.GetComponent<LineRenderer>();
     }
 
     void Update()
     {
+        if (!canShoot)
+        {
+            projectile.transform.position = spawnPoint.position;
+            return;
+        }
         if (Input.GetMouseButtonDown(0)) // Si el jugador comienza a arrastrar
         {
+            rb.angularVelocity = 0;
+            projectile.gameObject.SetActive(true);
+            projectile.ps.gameObject.SetActive(true);
+            projectile.transform.position = spawnPoint.position;
             isDragging = true;
             dragStartPosition = Input.mousePosition; // Guardar la posición de inicio del arrastre
-            projectile.transform.position = spawnPoint.position;
             rb.velocity = Vector2.zero;
             rb.gravityScale = 0;
 
@@ -51,8 +62,6 @@ public class Catapult : MonoBehaviour
             dragDistance = Vector3.Distance(dragStartPosition, dragEndPosition); // Calcular la distancia del arrastre
             dragDistance = Mathf.Clamp(dragDistance, 0f, maxDragDistance); // Limitar la distancia máxima permitida para arrastrar
             dragDirection = (dragStartPosition - dragEndPosition);
-            projectile.transform.position = spawnPoint.position - dragDirection.normalized;
-
             // update trajectory line
             if (lr != null)
             {
@@ -63,11 +72,8 @@ public class Catapult : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0)) // Si el jugador suelta el arrastre
         {
-            isDragging = false;
-            rb.gravityScale = 1;
-            rb.AddForce(dragDirection * forceMagnitude * dragDistance, ForceMode2D.Impulse); // Aplicar la fuerza al proyectil
-            Debug.Log("Lanzamiento " + dragDistance);
-
+            canShoot = false;
+            animator.SetTrigger("Launch");
             // hide trajectory line
             if (lr != null)
             {
@@ -78,6 +84,19 @@ public class Catapult : MonoBehaviour
         // update trajectory line
         lr.SetPosition(0, spawnPoint.position);
         DrawTrajectory(spawnPoint.position, dragDirection.normalized * forceMagnitude, rb.gravityScale, dragDistance);
+
+    }
+    public void LaunchProyectil()
+    {
+        projectile.onCatapult = false;
+        projectile.ResetLifeTime();
+        canShoot = true;
+        isDragging = false;
+        rb.gravityScale = 1;
+        rb.angularVelocity = -500f;
+        projectile.transform.position = spawnPoint.position;
+        rb.AddForce(dragDirection * forceMagnitude * dragDistance, ForceMode2D.Impulse); // Aplicar la fuerza al proyectil
+        Debug.Log("Lanzamiento " + dragDistance);
 
     }
 

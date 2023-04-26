@@ -456,8 +456,8 @@ LineRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211884060}
-  m_Enabled: 1
-  m_CastShadows: 1
+  m_Enabled: 0
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -489,7 +489,7 @@ LineRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
@@ -543,11 +543,16 @@ LineRenderer:
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 2
     shadowBias: 0.5
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!1 &214670308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3003368998148641713, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
+  m_PrefabInstance: {fileID: 6608886395000457576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &222361440
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,7 +674,7 @@ MonoBehaviour:
   ps: {fileID: 1848476598}
   onCatapult: 1
   explosionForce: 20
-  explosionRadius: 5
+  explosionRadius: 1
   explosionPS: {fileID: 1037835224}
 --- !u!50 &222361445
 Rigidbody2D:
@@ -867,6 +872,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 210412395}
     m_Modifications:
+    - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: SmokeParticles
+      value: 
+      objectReference: {fileID: 1192285403}
     - target: {fileID: 3498944973295866824, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: m_Name
       value: woodWall (6)
@@ -915,6 +924,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6353041438377991226, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303368952206083726, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9403365b712638241a51d20860e29bac, type: 3}
 --- !u!1001 &544853193
@@ -924,6 +941,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 210412395}
     m_Modifications:
+    - target: {fileID: 2094599503447221515, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: SmokeParticles
+      value: 
+      objectReference: {fileID: 1192285403}
     - target: {fileID: 3498944973295866824, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: m_Name
       value: woodWall (8)
@@ -971,6 +996,30 @@ PrefabInstance:
     - target: {fileID: 5239721190174048103, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353041438377991226, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353041438377991226, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303368952206083726, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684100860485966889, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684100860485966889, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7684100860485966889, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9403365b712638241a51d20860e29bac, type: 3}
@@ -1340,6 +1389,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 210412395}
     m_Modifications:
+    - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: SmokeParticles
+      value: 
+      objectReference: {fileID: 1192285403}
     - target: {fileID: 3498944973295866824, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: m_Name
       value: woodWall (7)
@@ -1388,8 +1441,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6353041438377991226, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303368952206083726, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9403365b712638241a51d20860e29bac, type: 3}
+--- !u!198 &900788336 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6353041438377991226, guid: 9403365b712638241a51d20860e29bac, type: 3}
+  m_PrefabInstance: {fileID: 544853193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &929495140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,6 +1496,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5879336559962717982, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
   m_PrefabInstance: {fileID: 6608886395000457576}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &939472333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214670308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50d91b2aff4f4345b738ebf0a8be719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireParticles: {fileID: 900788336}
+  iceParticles: {fileID: 0}
+  damageParticles: {fileID: 0}
+  destroyParticles: {fileID: 0}
+  SmokeParticles: {fileID: 1192285403}
+  IgniteTime: 5
 --- !u!1 &948727104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,7 +1652,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 16fa0c76572103a48b15c86453896de0, type: 2}
+  - {fileID: 2100000, guid: 1f6582ec82c3a83479ff3a3c5e48982b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6589,6 +6673,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!198 &1192285403 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2094599503447221515, guid: 9403365b712638241a51d20860e29bac, type: 3}
+  m_PrefabInstance: {fileID: 4798542468483957229}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1222862629 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5239721190174048103, guid: 9403365b712638241a51d20860e29bac, type: 3}
@@ -7508,6 +7597,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 210412395}
     m_Modifications:
+    - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: SmokeParticles
+      value: 
+      objectReference: {fileID: 1192285403}
     - target: {fileID: 3498944973295866824, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: m_Name
       value: woodWall (5)
@@ -7555,6 +7648,14 @@ PrefabInstance:
     - target: {fileID: 5239721190174048103, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353041438377991226, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303368952206083726, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9403365b712638241a51d20860e29bac, type: 3}
@@ -7612,7 +7713,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 16fa0c76572103a48b15c86453896de0, type: 2}
+  - {fileID: 2100000, guid: 1f6582ec82c3a83479ff3a3c5e48982b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12894,6 +12995,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 210412395}
     m_Modifications:
+    - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: SmokeParticles
+      value: 
+      objectReference: {fileID: 1192285403}
     - target: {fileID: 3498944973295866824, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: m_Name
       value: woodWall (4)
@@ -12941,6 +13046,54 @@ PrefabInstance:
     - target: {fileID: 5239721190174048103, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353041438377991226, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303368952206083726, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872667895499839894, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872667895499839894, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872667895499839894, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872667895499839894, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872667895499839894, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872667895499839894, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872667895499839894, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872667895499839894, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872667895499839894, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872667895499839894, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9403365b712638241a51d20860e29bac, type: 3}
@@ -13028,9 +13181,45 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 210412395}
     m_Modifications:
+    - target: {fileID: 2409411080484923474, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409411080484923474, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409411080484923474, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409411080484923474, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409411080484923474, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409411080484923474, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409411080484923474, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409411080484923474, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3003368998148641713, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
       propertyPath: m_Name
       value: HeavyWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953232533452240649, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
+      propertyPath: EmissionModule.enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4487670396960645119, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
       propertyPath: m_Size.x

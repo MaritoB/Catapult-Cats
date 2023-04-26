@@ -2,6 +2,7 @@ using UnityEngine;
 public enum Element
 {
     Fire,
+    Wood,
     Ice,
     Metal,
     Rock

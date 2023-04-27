@@ -380,6 +380,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5239721190174048103, guid: 9403365b712638241a51d20860e29bac, type: 3}
   m_PrefabInstance: {fileID: 871361261}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &180619596 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2094599503447221515, guid: 9403365b712638241a51d20860e29bac, type: 3}
+  m_PrefabInstance: {fileID: 1793514456}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &210412394
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,7 +678,7 @@ MonoBehaviour:
   element: 0
   ps: {fileID: 1848476598}
   onCatapult: 1
-  explosionForce: 20
+  explosionForce: 3
   explosionRadius: 1
   explosionPS: {fileID: 1037835224}
 --- !u!50 &222361445
@@ -781,6 +786,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!198 &285126234 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2094599503447221515, guid: 9403365b712638241a51d20860e29bac, type: 3}
+  m_PrefabInstance: {fileID: 336624355}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &311021818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3760447460770432208, guid: 9f0fa283dd46c0746b7f96480d95b55c, type: 3}
@@ -873,9 +883,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 210412395}
     m_Modifications:
     - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: IgniteTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: SmokeParticles
       value: 
-      objectReference: {fileID: 1192285403}
+      objectReference: {fileID: 285126234}
     - target: {fileID: 3498944973295866824, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: m_Name
       value: woodWall (6)
@@ -946,9 +960,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: IgniteTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: SmokeParticles
       value: 
-      objectReference: {fileID: 1192285403}
+      objectReference: {fileID: 841404226}
     - target: {fileID: 3498944973295866824, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: m_Name
       value: woodWall (8)
@@ -1382,6 +1400,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!198 &841404226 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2094599503447221515, guid: 9403365b712638241a51d20860e29bac, type: 3}
+  m_PrefabInstance: {fileID: 544853193}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &871361261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1390,9 +1413,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 210412395}
     m_Modifications:
     - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: IgniteTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: SmokeParticles
       value: 
-      objectReference: {fileID: 1192285403}
+      objectReference: {fileID: 1189693697}
     - target: {fileID: 3498944973295866824, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: m_Name
       value: woodWall (7)
@@ -1451,11 +1478,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9403365b712638241a51d20860e29bac, type: 3}
---- !u!198 &900788336 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6353041438377991226, guid: 9403365b712638241a51d20860e29bac, type: 3}
-  m_PrefabInstance: {fileID: 544853193}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &929495140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,12 +1530,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50d91b2aff4f4345b738ebf0a8be719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireParticles: {fileID: 900788336}
+  fireParticles: {fileID: 1378239872}
   iceParticles: {fileID: 0}
   damageParticles: {fileID: 0}
   destroyParticles: {fileID: 0}
-  SmokeParticles: {fileID: 1192285403}
-  IgniteTime: 5
+  SmokeParticles: {fileID: 2013431160}
+  IgniteTime: 20
+  IgniteOthersTime: 0
+  IgniteRadius: 2
 --- !u!1 &948727104
 GameObject:
   m_ObjectHideFlags: 0
@@ -6673,6 +6697,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
+--- !u!198 &1188685831 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6353041438377991226, guid: 9403365b712638241a51d20860e29bac, type: 3}
+  m_PrefabInstance: {fileID: 4798542468483957229}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1189693697 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2094599503447221515, guid: 9403365b712638241a51d20860e29bac, type: 3}
+  m_PrefabInstance: {fileID: 871361261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!198 &1192285403 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2094599503447221515, guid: 9403365b712638241a51d20860e29bac, type: 3}
@@ -7001,6 +7035,11 @@ Transform:
   m_Father: {fileID: 1533422275}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &1378239872 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3082989635942843250, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
+  m_PrefabInstance: {fileID: 6608886395000457576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1526790088
 GameObject:
   m_ObjectHideFlags: 0
@@ -7598,9 +7637,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 210412395}
     m_Modifications:
     - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: IgniteTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: SmokeParticles
       value: 
-      objectReference: {fileID: 1192285403}
+      objectReference: {fileID: 180619596}
     - target: {fileID: 3498944973295866824, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: m_Name
       value: woodWall (5)
@@ -12850,6 +12893,11 @@ Transform:
   m_Father: {fileID: 1165146840}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!198 &2013431160 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3953232533452240649, guid: fe864c0d9b2dc174084bbb5b682d74be, type: 3}
+  m_PrefabInstance: {fileID: 6608886395000457576}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2079664412
 GameObject:
   m_ObjectHideFlags: 0
@@ -12995,6 +13043,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 210412395}
     m_Modifications:
+    - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: IgniteTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
+      propertyPath: fireParticles
+      value: 
+      objectReference: {fileID: 1188685831}
     - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: SmokeParticles
       value: 

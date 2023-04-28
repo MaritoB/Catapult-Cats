@@ -807,6 +807,7 @@ GameObject:
   - component: {fileID: 318202799}
   - component: {fileID: 318202797}
   - component: {fileID: 318202800}
+  - component: {fileID: 318202801}
   m_Layer: 0
   m_Name: Catapulta
   m_TagString: Untagged
@@ -829,8 +830,7 @@ MonoBehaviour:
   projectile: {fileID: 222361444}
   aim: {fileID: 211884060}
   spawnPoint: {fileID: 2004863752}
-  maxDragDistance: 5
-  forceMagnitude: 0.002
+  baseForceMagnitude: 0.002
 --- !u!4 &318202799
 Transform:
   m_ObjectHideFlags: 0
@@ -870,6 +870,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &318202801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318202796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18a6105603477c44960380571009ed0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDragDistance: 5
+  forceMagnitude: 20
 --- !u!4 &323037292 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5239721190174048103, guid: 9403365b712638241a51d20860e29bac, type: 3}

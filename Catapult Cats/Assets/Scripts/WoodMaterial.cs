@@ -3,24 +3,37 @@ using UnityEngine;
 
 public class WoodMaterial : MonoBehaviour, MaterialType
 {
+    public GameObject physics;
+    private SpriteRenderer sprite;
+
     public ParticleSystem fireParticles;
     public ParticleSystem iceParticles;
     public ParticleSystem damageParticles;
     public ParticleSystem destroyParticles;
     public ParticleSystem SmokeParticles;
+
     public float IgniteTime;
     public float IgniteOthersTime = 1;
     public float IgniteRadius;
     private bool isBurning = false;
-    private SpriteRenderer sprite;
     private float colorLerpT;
+
     private void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
+        sprite = physics.GetComponent<SpriteRenderer>();
 
+    }
+    void adjustPositions()
+    {
+        Vector3 position = physics.transform.position;
+        fireParticles.transform.position = position;
+        //iceParticles.transform.position = position;
+        //damageParticles.transform.position = position;
+        SmokeParticles.transform.position = position;
     }
     private void Update()
     {
+        adjustPositions();
         if (isBurning)
         {
             sprite.color = Color.Lerp(Color.white, Color.black, colorLerpT);
@@ -74,7 +87,6 @@ public class WoodMaterial : MonoBehaviour, MaterialType
         fireParticles.gameObject.SetActive(true);
         fireParticles.Play();
         SmokeParticles.gameObject.SetActive(true);
-        SmokeParticles.transform.position = transform.position;
         SmokeParticles.Emit(30);
         StartCoroutine(DisableOnSeconds());
     }
@@ -83,7 +95,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, IgniteRadius);
         foreach (Collider2D collider in colliders)
         {
-            WoodMaterial material = collider.GetComponent<WoodMaterial>();
+            WoodMaterial material = collider.GetComponentInParent<WoodMaterial>();
             if(material != null && material != this)
             {
                 
@@ -99,24 +111,22 @@ public class WoodMaterial : MonoBehaviour, MaterialType
     }
     private IEnumerator DisableOnSeconds()
     {
-        GetComponent<SpriteRenderer>().color = Color.Lerp(Color.white, Color.black, IgniteTime);
         yield return new WaitForSeconds(IgniteTime);
         isBurning = false;
+        physics.SetActive(false);
+        sprite.color = Color.white;
         SmokeParticles.gameObject.SetActive(true);
-        SmokeParticles.transform.position = transform.position;
         SmokeParticles.Emit(30);
         fireParticles.Stop();
-        StartCoroutine(turnOff());
+        //StartCoroutine(turnOff());
 
 
     }
     private IEnumerator turnOff()
     {
-
         yield return new WaitForSeconds(3);
-        gameObject.SetActive(false);
-
-        GetComponent<SpriteRenderer>().color = Color.white;
+        physics.SetActive(false);
+        sprite.color = Color.white;
 
     }
 

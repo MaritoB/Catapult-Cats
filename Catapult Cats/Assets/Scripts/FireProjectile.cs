@@ -12,7 +12,7 @@ public class FireProjectile : Projectile
         foreach (Collider2D collider in colliders)
         {
             Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
-            MaterialType material = collider.GetComponent<MaterialType>();
+            MaterialType material = collider.GetComponentInParent<MaterialType>();
             if (rb != null)
             {
                 Vector2 explosionDirection = rb.transform.position - transform.position;

@@ -49,7 +49,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
             else
             {
                 IgniteNearWood();
-                IgniteOthersTime = 1f;
+                IgniteOthersTime = 0.3f;
             }
 
         }
@@ -92,7 +92,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
     }
     private void IgniteNearWood()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, IgniteRadius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(physics.transform.position, IgniteRadius);
         foreach (Collider2D collider in colliders)
         {
             WoodMaterial material = collider.GetComponentInParent<WoodMaterial>();

@@ -50,7 +50,7 @@ public class DragToShoot : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0)) // Si el jugador suelta el arrastre
         {
-            catapult.CastProyectile(dragDirection, dragDistance);
+            catapult.CastProjectile(dragDirection, dragDistance);
             // hide trajectory line
             /*
             if (lr != null)

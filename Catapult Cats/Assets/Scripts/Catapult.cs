@@ -40,7 +40,7 @@ public class Catapult : MonoBehaviour
             return;
         }
     }
-    public void CastProyectile(Vector2 aDirection, float aForceMultiplier)
+    public void CastProjectile(Vector2 aDirection, float aForceMultiplier)
     {
         Direction = aDirection;
         ForceMultiplier = aForceMultiplier;

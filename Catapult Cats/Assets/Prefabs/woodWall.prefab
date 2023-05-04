@@ -4828,7 +4828,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 16fa0c76572103a48b15c86453896de0, type: 2}
+  - {fileID: 2100000, guid: 3d132957348002e44b3d1af5a0585b45, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4935,6 +4935,7 @@ MonoBehaviour:
   IgniteTime: 4
   IgniteOthersTime: 1
   IgniteRadius: 1
+  burningDamage: 3
 --- !u!1 &5350513842626598717
 GameObject:
   m_ObjectHideFlags: 0

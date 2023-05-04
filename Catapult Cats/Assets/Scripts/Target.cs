@@ -11,7 +11,6 @@ public class Target : MonoBehaviour
         if (collision.relativeVelocity.magnitude >= minCollisionForce) // Si la colisión tiene una fuerza suficiente para destruir el objetivo
         {
             gameObject.SetActive(false);
-            //Explode(); // Generar la explosión
         }
     }
 

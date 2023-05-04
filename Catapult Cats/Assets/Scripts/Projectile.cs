@@ -23,7 +23,10 @@ public class Projectile : MonoBehaviour
 
     private void Update()
     {
-        ps.transform.position = transform.position;
+        if(ps != null)
+        {
+            ps.transform.position = transform.position;
+        }
         if (onCatapult) return;
         currentLifeTime -= Time.deltaTime;
         if (currentLifeTime < 0)

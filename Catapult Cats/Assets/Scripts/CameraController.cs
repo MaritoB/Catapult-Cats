@@ -37,7 +37,7 @@ public class CameraController : MonoBehaviour
         float currentSpeed = isMovingFast ? fastSpeed : smoothSpeed;
         Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, currentSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
-
+        /*
         if (Input.GetMouseButton(0))
         {
             isMovingFast = true;
@@ -49,5 +49,6 @@ public class CameraController : MonoBehaviour
             cannonPosition.z = transform.position.z;
             transform.position = Vector3.Lerp(transform.position, cannonPosition, fastSpeed * Time.deltaTime);
         }
+         */
     }
 }

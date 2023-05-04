@@ -17,6 +17,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
     public float IgniteRadius;
     private bool isBurning = false;
     private float colorLerpT;
+    public float burningDamage;
 
     private void Start()
     {
@@ -98,15 +99,19 @@ public class WoodMaterial : MonoBehaviour, MaterialType
             WoodMaterial material = collider.GetComponentInParent<WoodMaterial>();
             if(material != null && material != this)
             {
-                
                 if (material.isBurning)
                 {
                     continue;
                 }
-                 
                 Debug.Log(gameObject.name + " Ignite " + material.gameObject.name);
                 material.Ignite();
             }
+            EnemyBase enemy = collider.GetComponentInParent<EnemyBase>();
+            if(enemy != null)
+            {
+                enemy.ReciveDamage(burningDamage);
+            }
+
         }
     }
     private IEnumerator DisableOnSeconds()

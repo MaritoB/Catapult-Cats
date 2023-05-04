@@ -12,7 +12,6 @@ public class FireProjectile : Projectile
         foreach (Collider2D collider in colliders)
         {
             Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
-            MaterialType material = collider.GetComponentInParent<MaterialType>();
             if (rb != null)
             {
                 Vector2 explosionDirection = rb.transform.position - transform.position;
@@ -20,10 +19,12 @@ public class FireProjectile : Projectile
                 float explosionPower = 1 - (distance / explosionRadius);
                 rb.AddForce(explosionDirection.normalized * explosionForce * explosionPower, ForceMode2D.Impulse);
             }
+            MaterialType material = collider.GetComponentInParent<MaterialType>();
             if(material != null)
             {
                 material.ReactToCollision(element);
             }
+
         }
         gameObject.SetActive(false);
     }

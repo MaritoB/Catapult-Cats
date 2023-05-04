@@ -13,6 +13,7 @@ public class DragToShoot : MonoBehaviour
     public float ShootCooldown;
     private float ShootEstimatedTime = 3f;
     private float CurrentShootEstimatedTime = 0f;
+    public Trajectory trajectory;    
 
     public float CurrentShootCooldown = 0f;
 
@@ -34,6 +35,7 @@ public class DragToShoot : MonoBehaviour
             catapult.setProjectileToShoot();
             if (Input.GetMouseButtonDown(0)) // Si el jugador comienza a arrastrar
             {
+                trajectory.Show();
                 isDragging = true;
                 dragStartPosition = Input.mousePosition; // Guardar la posición de inicio del arrastre
             
@@ -55,6 +57,7 @@ public class DragToShoot : MonoBehaviour
                 dragDistance = Vector2.Distance(dragStartPosition, dragEndPosition); // Calcular la distancia del arrastre
                 dragDistance = Mathf.Clamp(dragDistance, 0f, maxDragDistance); // Limitar la distancia máxima permitida para arrastrar
                 dragDirection = (dragStartPosition - dragEndPosition);
+                trajectory.UpdateDots(catapult.aim.transform.position, dragDirection * forceMagnitude);
 
             }
 
@@ -63,6 +66,7 @@ public class DragToShoot : MonoBehaviour
                 catapult.CastProjectile(dragDirection, dragDistance);
                 CurrentShootCooldown = ShootCooldown;
                 CurrentShootEstimatedTime = ShootEstimatedTime;
+                trajectory.Hide();
                 // hide trajectory line
                 /*
                 if (lr != null)

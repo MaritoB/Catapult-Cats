@@ -14,13 +14,11 @@ public class Catapult : MonoBehaviour
     private float ForceMultiplier;
 
     private Rigidbody2D rb;
-    private LineRenderer lr;
 
     void Start()
     {
         animator = GetComponent<Animator>();
         rb = projectile.GetComponent<Rigidbody2D>();
-        lr = aim.GetComponent<LineRenderer>();
     }
     public void setProjectileToShoot()
     {

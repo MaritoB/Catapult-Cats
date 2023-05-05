@@ -12,7 +12,7 @@ public class Catapult : MonoBehaviour
     private bool canShoot = true;
     private Vector2 Direction = Vector2.zero;
     private float ForceMultiplier;
-
+     
     private Rigidbody2D rb;
 
     void Start()

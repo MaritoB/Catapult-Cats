@@ -28,6 +28,7 @@ public class DragToShoot : MonoBehaviour
         if (CurrentShootCooldown > 0)
         {
             CurrentShootCooldown -= Time.deltaTime;
+            isDragging = false;
             return;
         }
         else

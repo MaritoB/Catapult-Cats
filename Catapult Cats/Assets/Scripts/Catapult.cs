@@ -1,60 +1,82 @@
+using System.Collections;
 using UnityEngine;
 
 public class Catapult : MonoBehaviour
 {
-    public Projectile projectile;
+    public GameObject projectileGameObject;
     public GameObject aim;
     public Transform spawnPoint;
 
     public float baseForceMagnitude;
 
+    public Projectile projectile;
     private Animator animator;
     private bool canShoot = true;
+
+    public bool CanShoot
+    {
+        get { return canShoot; }
+        private set { canShoot = value; }
+    }
     private Vector2 Direction = Vector2.zero;
     private float ForceMultiplier;
-     
-    private Rigidbody2D rb;
+    public bool isFiring = false;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        rb = projectile.GetComponent<Rigidbody2D>();
-    }
-    public void setProjectileToShoot()
-    {
-        rb.angularVelocity = 0;
-        rb.velocity = Vector2.zero;
-        rb.gravityScale = 0;
-        projectile.gameObject.SetActive(true);
-        projectile.ps.gameObject.SetActive(true);
-        projectile.transform.position = spawnPoint.position;
-    }
+        projectile = projectileGameObject.GetComponent<Projectile>();
 
+    }
     void Update()
     {
-        if (!canShoot)
+        
+        if (isFiring)
         {
-            projectile.transform.position = spawnPoint.position;
-            return;
+            projectile.body.transform.position = spawnPoint.position;
+        }
+        
+    }
+    public void setupProjectile()
+    {
+        isFiring = true;
+        if(projectileGameObject != null && projectile != null)
+        {
+            projectile.gameObject.SetActive(true);
+            projectile.SetProjectileToShoot(spawnPoint.position);
         }
     }
     public void CastProjectile(Vector2 aDirection, float aForceMultiplier)
     {
+        if (!canShoot || projectile == null)
+        {
+            return;
+        }
         Direction = aDirection;
         ForceMultiplier = aForceMultiplier;
         Debug.Log(Direction.ToString() + ", " + ForceMultiplier);
         canShoot = false;
         animator.SetTrigger("Launch");
     }
+    IEnumerator ResetCanShoot()
+    {
+        yield return new WaitForSeconds(4f);
+        canShoot = true;
+        setupProjectile();
+
+    }
     public void LaunchProyectil()
     {
-        projectile.onCatapult = false;
-        projectile.ResetLifeTime();
-        canShoot = true;
+        Debug.Log("Launch");
+        isFiring = false;
+        projectile.LaunchProyectile(spawnPoint.position, Direction * baseForceMagnitude * ForceMultiplier);
+        /*
         rb.gravityScale = 1;
         rb.angularVelocity = -500f;
-        projectile.transform.position = spawnPoint.position;
+        projectileGameObject.transform.position = spawnPoint.position;
         rb.AddForce(Direction * baseForceMagnitude * ForceMultiplier, ForceMode2D.Impulse);
+         */
+        StartCoroutine(ResetCanShoot());
 
     }
 }

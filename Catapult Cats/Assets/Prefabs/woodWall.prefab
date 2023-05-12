@@ -4926,7 +4926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50d91b2aff4f4345b738ebf0a8be719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  physics: {fileID: 9078683150011001531}
+  body: {fileID: 9078683150011001531}
   fireParticles: {fileID: 6353041438377991226}
   iceParticles: {fileID: 0}
   damageParticles: {fileID: 0}
@@ -19586,7 +19586,7 @@ GameObject:
   - component: {fileID: 3481506595311998272}
   - component: {fileID: 5865048919302209921}
   m_Layer: 0
-  m_Name: Physics
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

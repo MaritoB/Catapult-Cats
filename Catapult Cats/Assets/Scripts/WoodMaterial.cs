@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WoodMaterial : MonoBehaviour, MaterialType
 {
-    public GameObject physics;
+    public GameObject body;
     private SpriteRenderer sprite;
 
     public ParticleSystem fireParticles;
@@ -21,12 +21,12 @@ public class WoodMaterial : MonoBehaviour, MaterialType
 
     private void Start()
     {
-        sprite = physics.GetComponent<SpriteRenderer>();
+        sprite = body.GetComponent<SpriteRenderer>();
 
     }
     void adjustPositions()
     {
-        Vector3 position = physics.transform.position;
+        Vector3 position = body.transform.position;
         fireParticles.transform.position = position;
         //iceParticles.transform.position = position;
         //damageParticles.transform.position = position;
@@ -93,7 +93,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
     }
     private void IgniteNearWood()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(physics.transform.position, IgniteRadius);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(body.transform.position, IgniteRadius);
         foreach (Collider2D collider in colliders)
         {
             WoodMaterial material = collider.GetComponentInParent<WoodMaterial>();
@@ -118,7 +118,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
     {
         yield return new WaitForSeconds(IgniteTime);
         isBurning = false;
-        physics.SetActive(false);
+        body.SetActive(false);
         sprite.color = Color.white;
         SmokeParticles.gameObject.SetActive(true);
         SmokeParticles.Emit(30);
@@ -130,7 +130,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
     private IEnumerator turnOff()
     {
         yield return new WaitForSeconds(3);
-        physics.SetActive(false);
+        body.SetActive(false);
         sprite.color = Color.white;
 
     }
@@ -142,7 +142,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
 
     private void Damage()
     {
-        damageParticles.Play();
+        body.SetActive(false);
     }
 
     private void Destroy()

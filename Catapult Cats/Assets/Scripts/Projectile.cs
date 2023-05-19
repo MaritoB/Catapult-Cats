@@ -9,12 +9,9 @@ public enum Element
 public class Projectile: MonoBehaviour
 {
     public GameObject body;
+    public  Rigidbody2D rb;
     public int damage { get; set; }
     public  Element element { get; set; }
-    public void Start()
-    {
-        body = GetComponentInChildren<Rigidbody2D>().gameObject;
-    }
     public virtual void HandleCollision(Collision2D aCollision)
     {
         Debug.Log("Projectil Base HandleCollision");

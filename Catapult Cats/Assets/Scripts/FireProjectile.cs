@@ -7,12 +7,11 @@ public class FireProjectile : Projectile
 
     public ParticleSystem explosionPS;
     public ParticleSystem firePS;
-    private Rigidbody2D rigidbody;
 
     private void Start()
     {
+        rb = body.GetComponent<Rigidbody2D>();
         element = Element.Fire;
-        rigidbody = body.GetComponent<Rigidbody2D>();
     }
     private void Update()
     {
@@ -31,18 +30,18 @@ public class FireProjectile : Projectile
     {
         body.SetActive(true);
         body.transform.position = SpawnPosition;
-        rigidbody.angularVelocity = 0;
-        rigidbody.velocity = Vector2.zero;
-        rigidbody.gravityScale = 0;
+        rb.angularVelocity = 0;
+        rb.velocity = Vector2.zero;
+        rb.gravityScale = 0;
         firePS.gameObject.SetActive(true);
     }
     public override void LaunchProyectile(Vector3 SpawnPosition, Vector3 aForce)
     {
-        rigidbody.gravityScale = 1;
-        rigidbody.angularVelocity = -500f;
-        rigidbody.velocity =Vector2.zero;
+        rb.gravityScale = 1;
+        rb.angularVelocity = -500f;
+        rb.velocity =Vector2.zero;
         body.transform.position = SpawnPosition;
-        rigidbody.AddForce(aForce, ForceMode2D.Impulse);
+        rb.AddForce(aForce, ForceMode2D.Impulse);
     }
 
     private void Explode()

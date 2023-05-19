@@ -5,12 +5,13 @@ using UnityEngine;
 public class BladeProjectile : Projectile
 {
     private Rigidbody2D rigidbody;
-    private float cuttingForce = 100f;
+    [SerializeField]
+    private float cuttingForce = 1f;
 
     private void Start()
     {
+        rb = body.GetComponent<Rigidbody2D>();
         element = Element.Metal;
-        rigidbody = body.GetComponent<Rigidbody2D>();
     }
 
     public override void LaunchProyectile(Vector3 SpawnPosition, Vector3 aForce)
@@ -27,7 +28,9 @@ public class BladeProjectile : Projectile
 
     public override void HandleCollision(Collision2D aCollision)
     {
-        if(aCollision.relativeVelocity.magnitude < cuttingForce)
+ 
+
+        if (aCollision.relativeVelocity.magnitude < cuttingForce)
         {
             return;
         }

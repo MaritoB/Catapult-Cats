@@ -30,17 +30,18 @@ public class MultipleProyectile : Projectile
     
     public void ActivateSubProjectiles()
     {
-        //canLaunchSubprojectiles=false;
-       // body.SetActive(false);
+        canLaunchSubprojectiles=false;
         for (int i = 0; i < subProjectiles.Length; i++)
         {
             Projectile p = subProjectiles[i];
             p.body.gameObject.SetActive(true);
             p.body.transform.position = rb.transform.position +  Vector3.right * ProjectileDispersion * i ;
             p.rb.velocity = rb.velocity;
+            p.rb.AddForce(Vector2.one * ProjectileDispersion * i, ForceMode2D.Impulse);
             p.rb.gravityScale = 1;
             p.rb.angularVelocity = -500f;
         }
+        body.SetActive(false);
     }
     private void Update()
     {

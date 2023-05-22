@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BladeProjectile : Projectile
 {
-    private Rigidbody2D rigidbody;
     [SerializeField]
     private float cuttingForce = 1f;
 
@@ -12,15 +11,16 @@ public class BladeProjectile : Projectile
     {
         rb = body.GetComponent<Rigidbody2D>();
         element = Element.Metal;
+        body.SetActive(false);
     }
 
     public override void LaunchProyectile(Vector3 SpawnPosition, Vector3 aForce)
     {
-        rigidbody.gravityScale = 1;
-        rigidbody.angularVelocity = -500f;
-        rigidbody.velocity = Vector2.zero;
+        rb.gravityScale = 1;
+        rb.angularVelocity = -500f;
+        rb.velocity = Vector2.zero;
         body.transform.position = SpawnPosition;
-        rigidbody.AddForce(aForce, ForceMode2D.Impulse);
+        rb.AddForce(aForce, ForceMode2D.Impulse);
     }
     private void Update()
     {
@@ -43,9 +43,9 @@ public class BladeProjectile : Projectile
 
     public override void SetProjectileToShoot(Vector3 SpawnPosition)
     {
-        rigidbody.angularVelocity = 0;
-        rigidbody.velocity = Vector2.zero;
-        rigidbody.gravityScale = 0;
+        rb.angularVelocity = 0;
+        rb.velocity = Vector2.zero;
+        rb.gravityScale = 0;
         body.SetActive(true);
         //ps.gameObject.SetActive(true);
         body.transform.position = SpawnPosition;

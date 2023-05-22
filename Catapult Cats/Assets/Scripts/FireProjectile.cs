@@ -12,6 +12,8 @@ public class FireProjectile : Projectile
     {
         rb = body.GetComponent<Rigidbody2D>();
         element = Element.Fire;
+        body.SetActive(false);
+        firePS.gameObject.SetActive(false);
     }
     private void Update()
     {
@@ -29,11 +31,11 @@ public class FireProjectile : Projectile
     public override void SetProjectileToShoot(Vector3 SpawnPosition)
     {
         body.SetActive(true);
+        firePS.gameObject.SetActive(true);
         body.transform.position = SpawnPosition;
         rb.angularVelocity = 0;
         rb.velocity = Vector2.zero;
         rb.gravityScale = 0;
-        firePS.gameObject.SetActive(true);
     }
     public override void LaunchProyectile(Vector3 SpawnPosition, Vector3 aForce)
     {

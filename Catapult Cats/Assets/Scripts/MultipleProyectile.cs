@@ -5,11 +5,10 @@ using UnityEngine;
 public class MultipleProyectile : Projectile
 {
     public Projectile[] subProjectiles;
+    public ParticleSystem smokePS;
     [SerializeField]
-    private float ProjectileDispersion;
+    private float ProjectileDispersion, ForceDispersionMultiplier, DispersionAngle;
     bool canLaunchSubprojectiles = false;
-
-    // Start is called before the first frame update
 
     private void Start()
     {
@@ -25,22 +24,29 @@ public class MultipleProyectile : Projectile
         body.transform.position = SpawnPosition;
         rb.AddForce(aForce, ForceMode2D.Impulse);
         canLaunchSubprojectiles=true;
-
     }
     
     public void ActivateSubProjectiles()
     {
         canLaunchSubprojectiles=false;
+        smokePS.gameObject.SetActive(true);
+        smokePS.gameObject.transform.position = body.transform.position + (Vector3)rb.velocity.normalized;
+        smokePS.Emit(30);
         for (int i = 0; i < subProjectiles.Length; i++)
         {
             Projectile p = subProjectiles[i];
             p.body.gameObject.SetActive(true);
-            p.body.transform.position = rb.transform.position +  Vector3.right * ProjectileDispersion * i ;
+            p.body.transform.position = rb.transform.position + Vector3.up * ProjectileDispersion * i;
             p.rb.velocity = rb.velocity;
-            p.rb.AddForce(Vector2.one * ProjectileDispersion * i, ForceMode2D.Impulse);
             p.rb.gravityScale = 1;
             p.rb.angularVelocity = -500f;
+            float angle = DispersionAngle * i;
+            Vector3 dispersionVector = Quaternion.Euler(0f, 0f, angle) * p.rb.velocity.normalized;
+            Vector3 newDirection = dispersionVector.normalized;
+            Vector3 force = newDirection * ForceDispersionMultiplier;
+            p.rb.AddForce(force, ForceMode2D.Impulse);
         }
+
         body.SetActive(false);
     }
     private void Update()
@@ -48,7 +54,7 @@ public class MultipleProyectile : Projectile
         if (canLaunchSubprojectiles)
         {
 
-            if (Input.GetMouseButtonDown(0)) // Si el jugador comienza a arrastrar
+            if (Input.GetMouseButtonDown(0)) 
             {
                 ActivateSubProjectiles();
             }
@@ -58,7 +64,8 @@ public class MultipleProyectile : Projectile
 
     public override void HandleCollision(Collision2D aCollision)
     {
-
+        ActivateSubProjectiles();
+  
     }
 
     public override void SetProjectileToShoot(Vector3 SpawnPosition)

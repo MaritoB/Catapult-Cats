@@ -5,6 +5,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
 {
     public GameObject body;
     private SpriteRenderer sprite;
+    public GameObject FireLight;
 
     public ParticleSystem fireParticles;
     public ParticleSystem iceParticles;
@@ -22,6 +23,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
     private void Start()
     {
         sprite = body.GetComponent<SpriteRenderer>();
+        
 
     }
     void adjustPositions()
@@ -85,10 +87,11 @@ public class WoodMaterial : MonoBehaviour, MaterialType
             return;
         }
         isBurning = true;
+        FireLight.SetActive(true);
         fireParticles.gameObject.SetActive(true);
         fireParticles.Play();
         SmokeParticles.gameObject.SetActive(true);
-        SmokeParticles.Emit(30);
+        SmokeParticles.Emit(5);
         StartCoroutine(DisableOnSeconds());
     }
     private void IgniteNearWood()
@@ -119,9 +122,10 @@ public class WoodMaterial : MonoBehaviour, MaterialType
         yield return new WaitForSeconds(IgniteTime);
         isBurning = false;
         body.SetActive(false);
+        FireLight.SetActive(false);
         sprite.color = Color.white;
         SmokeParticles.gameObject.SetActive(true);
-        SmokeParticles.Emit(30);
+        SmokeParticles.Emit(10);
         fireParticles.Stop();
         //StartCoroutine(turnOff());
 
@@ -142,12 +146,18 @@ public class WoodMaterial : MonoBehaviour, MaterialType
 
     private void Damage()
     {
+
+        destroyParticles.gameObject.SetActive(true);
+        destroyParticles.transform.position = body.transform.position;
+        destroyParticles.Emit(10);
         body.SetActive(false);
     }
 
     private void Destroy()
     {
-        destroyParticles.Play();
+        destroyParticles.gameObject.SetActive(true);
+        destroyParticles.transform.position = body.transform.position;
+        destroyParticles.Emit(10);
         gameObject.SetActive(false);
     }
 }

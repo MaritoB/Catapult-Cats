@@ -70,12 +70,6 @@ public class Catapult : MonoBehaviour
         Debug.Log("Launch");
         isFiring = false;
         projectile.LaunchProyectile(spawnPoint.position, Direction * baseForceMagnitude * ForceMultiplier);
-        /*
-        rb.gravityScale = 1;
-        rb.angularVelocity = -500f;
-        projectileGameObject.transform.position = spawnPoint.position;
-        rb.AddForce(Direction * baseForceMagnitude * ForceMultiplier, ForceMode2D.Impulse);
-         */
         StartCoroutine(ResetCanShoot());
 
     }

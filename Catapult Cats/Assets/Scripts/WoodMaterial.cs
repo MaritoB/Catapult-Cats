@@ -106,7 +106,6 @@ public class WoodMaterial : MonoBehaviour, MaterialType
                 {
                     continue;
                 }
-                Debug.Log(gameObject.name + " Ignite " + material.gameObject.name);
                 material.Ignite();
             }
             EnemyBase enemy = collider.GetComponentInParent<EnemyBase>();

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
@@ -9,15 +10,25 @@ public class EnemyBase : MonoBehaviour
     public ParticleSystem ps;
     [SerializeField]
     private AudioSource[] deathSounds;
+    private GameManager gameManager;
     void Start()
     {
         currentLife = MaxLife;
+        gameManager = GameManager.Instance;
+        StartCoroutine(AddEnemyCount());
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private IEnumerator AddEnemyCount()
+    {
+        yield return new WaitForSeconds(1);
+        gameManager.AddEnemyCount();
+
     }
     public void ReciveDamage(float aDamage)
     {
@@ -27,12 +38,17 @@ public class EnemyBase : MonoBehaviour
             Die();
         }
     }
+
     private void Die()
     {
         ps.transform.position = body.transform.position;
         body.SetActive(false);
         ps.Emit(30);
         PlayDeathSound();
+        if (gameManager != null)
+        {
+            gameManager.EnemyKilled();
+        }
     }
     private void PlayDeathSound()
     {
@@ -43,4 +59,5 @@ public class EnemyBase : MonoBehaviour
 
         }
     }
+
 }

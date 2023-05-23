@@ -7,6 +7,7 @@ public class Catapult : MonoBehaviour
     public GameObject aim;
     public Transform spawnPoint;
 
+    private GameManager gameManager;
     public float baseForceMagnitude;
 
     public Projectile projectile;
@@ -24,6 +25,7 @@ public class Catapult : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
         projectile = projectileGameObject.GetComponent<Projectile>();
 
@@ -52,6 +54,7 @@ public class Catapult : MonoBehaviour
         {
             return;
         }
+        gameManager.ShootProjectile();
         Direction = aDirection;
         ForceMultiplier = aForceMultiplier;
         Debug.Log(Direction.ToString() + ", " + ForceMultiplier);

@@ -12,6 +12,7 @@ public class Projectile: MonoBehaviour
     public  Rigidbody2D rb;
     public int damage { get; set; }
     public  Element element { get; set; }
+    protected Vector2 windForce;
     public virtual void HandleCollision(Collision2D aCollision)
     {
         Debug.Log("Projectil Base HandleCollision");
@@ -21,7 +22,7 @@ public class Projectile: MonoBehaviour
 
         Debug.Log("Projectil Base SetProjectileToShoot");
     }
-    public virtual void LaunchProyectile(Vector3 SpawnPosition, Vector3 aForce)
+    public virtual void LaunchProyectile(Vector3 SpawnPosition, Vector3 aForce, Vector2 wind)
     {
 
         Debug.Log("Projectil Base Launch");

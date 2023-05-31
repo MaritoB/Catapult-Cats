@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour
 
     private bool levelCompleted; // Indica si se ha completado el nivel
     private int starRating; // Puntuación en estrellas
-
+    [SerializeField]
+    private Vector2 WindForce;
+    [SerializeField]
+    private ParticleSystem WindPS;
     void Awake()
     {
         if (Instance == null)
@@ -24,7 +27,13 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        WindForce.x = Random.Range(-7, 7);
+        if(WindPS != null)
+        {
+            ParticleSystem.ForceOverLifetimeModule WindForceModule = WindPS.forceOverLifetime;
+            WindForceModule.x = WindForce.x;
+            WindForceModule.y = WindForce.y;
+        }
         DontDestroyOnLoad(gameObject);
     }
     public void AddEnemyCount()
@@ -83,6 +92,9 @@ public class GameManager : MonoBehaviour
         {
             starRating = 1;
         }
+    }
+    public Vector2 GetWind() {
+        return WindForce;
     }
 
     private void ShowLevelResult()

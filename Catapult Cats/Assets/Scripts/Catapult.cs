@@ -72,7 +72,7 @@ public class Catapult : MonoBehaviour
     {
         Debug.Log("Launch");
         isFiring = false;
-        projectile.LaunchProyectile(spawnPoint.position, Direction * baseForceMagnitude * ForceMultiplier);
+        projectile.LaunchProyectile(spawnPoint.position, Direction * baseForceMagnitude * ForceMultiplier, gameManager.GetWind());
         StartCoroutine(ResetCanShoot());
 
     }

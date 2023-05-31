@@ -13,14 +13,18 @@ public class BladeProjectile : Projectile
         element = Element.Metal;
         body.SetActive(false);
     }
-
-    public override void LaunchProyectile(Vector3 SpawnPosition, Vector3 aForce)
+    private void FixedUpdate()
+    {
+        rb.AddForce(windForce);
+    }
+    public override void LaunchProyectile(Vector3 aSpawnPosition, Vector3 aForce, Vector2 aWind)
     {
         rb.gravityScale = 1;
         rb.angularVelocity = -500f;
         rb.velocity = Vector2.zero;
-        body.transform.position = SpawnPosition;
+        body.transform.position = aSpawnPosition;
         rb.AddForce(aForce, ForceMode2D.Impulse);
+        windForce = aWind;
     }
     private void Update()
     {

@@ -9,12 +9,14 @@ public class MultipleProyectile : Projectile
     [SerializeField]
     private float ProjectileDispersion, ForceDispersionMultiplier, DispersionAngle;
     bool canLaunchSubprojectiles = false;
+    Vector2 wind;
 
     private void Start()
     {
         element = Element.Metal;
         rb = body.GetComponent<Rigidbody2D>();
         body.SetActive(false);
+
         for (int i = 0; i < subProjectiles.Length; i++)
         {
             Projectile p = subProjectiles[i];
@@ -25,14 +27,18 @@ public class MultipleProyectile : Projectile
         }
 
     }
-
-    public override void LaunchProyectile(Vector3 SpawnPosition, Vector3 aForce)
+    private void FixedUpdate()
+    {
+        rb.AddForce(windForce);
+    }
+    public override void LaunchProyectile(Vector3 aSpawnPosition, Vector3 aForce, Vector2 aWind)
     {
         rb.gravityScale = 1;
         rb.angularVelocity = -500f;
         rb.velocity = Vector2.zero;
-        body.transform.position = SpawnPosition;
+        body.transform.position = aSpawnPosition;
         rb.AddForce(aForce, ForceMode2D.Impulse);
+        windForce = aWind;
         canLaunchSubprojectiles=true;
     }
     

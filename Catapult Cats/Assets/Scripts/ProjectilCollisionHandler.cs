@@ -14,7 +14,6 @@ public class ProjectilCollisionHandler : MonoBehaviour
             Debug.Log("Collision propia");
             return;
         }
-        Debug.Log("Collision of "+ this.gameObject.name +" with : " + collision.otherCollider.gameObject.name);
         projectile.HandleCollision(collision);
     }
 }

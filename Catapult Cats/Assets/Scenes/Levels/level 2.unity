@@ -6391,6 +6391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxDragDistance: 5
   forceMagnitude: 20
+  catapult: {fileID: 0}
   trajectory: {fileID: 318202802}
 --- !u!114 &318202802
 MonoBehaviour:
@@ -7012,7 +7013,7 @@ Camera:
   far clip plane: 1000
   field of view: 1
   orthographic: 1
-  orthographic size: 8.1692295
+  orthographic size: 6.774451
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -41338,6 +41339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalEnemies: 1
+  Clouds: {fileID: 2079664413}
   WindForce: {x: -3, y: -1}
   WindPS: {fileID: 1724225742}
 --- !u!4 &2066714341

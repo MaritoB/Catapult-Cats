@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     private bool levelCompleted; // Indica si se ha completado el nivel
     private int starRating; // Puntuación en estrellas
     [SerializeField]
+    CloudsMovement Clouds;
+    [SerializeField]
     private Vector2 WindForce;
     [SerializeField]
     private ParticleSystem WindPS;
@@ -28,6 +30,7 @@ public class GameManager : MonoBehaviour
             return;
         }
         WindForce.x = Random.Range(-7, 7);
+        Clouds.SetWindForce(WindForce.x);
         if(WindPS != null)
         {
             ParticleSystem.ForceOverLifetimeModule WindForceModule = WindPS.forceOverLifetime;

@@ -10,6 +10,7 @@ public class CloudsMovement : MonoBehaviour
     public float[] LayersXOffset;
     public float[] LayersYOffset;
     public float[] LayersXConstantMovement;
+    float WindForce = 1;
     // Start is called before the first frame update
 
 
@@ -18,10 +19,14 @@ public class CloudsMovement : MonoBehaviour
     {
         for (int i = 0; i < LayersPositions.Length; ++i)
         {
-            LayersXOffset[i] += LayersXConstantMovement[i];
+            LayersXOffset[i] += LayersXConstantMovement[i]* WindForce;
             LayersPositions[i].position = new Vector3(LayersXOffset[i] + cameraPosition.position.x * LayersVelocity[i], LayersPositions[i].position.y, LayersPositions[i].position.z);
             //LayersPositions[i].position = new Vector3(LayersXOffset[i] + cameraPosition.position.x * LayersVelocity[i], cameraPosition.position.y + LayersYOffset[i], LayersPositions[i].position.z);
         }
 
+    }
+    public void SetWindForce(float aWindForce)
+    {
+        WindForce = aWindForce;
     }
 }

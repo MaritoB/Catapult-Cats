@@ -1012,10 +1012,9 @@ GameObject:
   - component: {fileID: 238056171}
   - component: {fileID: 238056173}
   - component: {fileID: 238056172}
-  - component: {fileID: 238056174}
   m_Layer: 0
   m_Name: DragToShoot
-  m_TagString: DragToShoot
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1047,9 +1046,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18a6105603477c44960380571009ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDragDistance: 5
-  forceMagnitude: 20
   catapult: {fileID: 318202797}
+  maxDragPercentage: 50
+  TrajectoryMultiplier: 150
+  dragDistance: 0
+  mousePosition: {x: 0, y: 0}
   trajectory: {fileID: 238056173}
 --- !u!114 &238056173
 MonoBehaviour:
@@ -1066,36 +1067,10 @@ MonoBehaviour:
   dotsNumber: 50
   dotsParent: {fileID: 1575968075}
   dotPrefab: {fileID: 3226765197190050944, guid: 5a5a3bef0ac189e42a4d9dc54bb7ad24, type: 3}
-  dotSpacing: 0.00005
+  dotSpacing: 0.0001
   dotMinScale: 0.1
   dotMaxScale: 0.2
-  GravityModifier: 3000000
---- !u!61 &238056174
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238056170}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.32345486, y: 0.5313878}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 18.604197, y: 12.281759}
-  m_EdgeRadius: 0
+  GravityModifier: 1000000
 --- !u!1 &251260646
 GameObject:
   m_ObjectHideFlags: 0
@@ -6120,7 +6095,7 @@ MonoBehaviour:
   projectileGameObject: {fileID: 717467093}
   aim: {fileID: 211884060}
   spawnPoint: {fileID: 2004863752}
-  baseForceMagnitude: 0.002
+  catapultForce: 0.5
   projectile: {fileID: 0}
   isFiring: 0
 --- !u!4 &318202799
@@ -6765,7 +6740,7 @@ Camera:
   far clip plane: 1000
   field of view: 1
   orthographic: 1
-  orthographic size: 6.346264
+  orthographic size: 9.326953
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2

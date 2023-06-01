@@ -8,7 +8,8 @@ public class Catapult : MonoBehaviour
     public Transform spawnPoint;
 
     private GameManager gameManager;
-    public float baseForceMagnitude;
+    public float catapultForce;
+    private float dragForcePercentage;
 
     public Projectile projectile;
     private Animator animator;
@@ -20,7 +21,6 @@ public class Catapult : MonoBehaviour
         private set { canShoot = value; }
     }
     private Vector2 Direction = Vector2.zero;
-    private float ForceMultiplier;
     public bool isFiring = false;
 
     void Start()
@@ -48,7 +48,7 @@ public class Catapult : MonoBehaviour
             projectile.SetProjectileToShoot(spawnPoint.position);
         }
     }
-    public void CastProjectile(Vector2 aDirection, float aForceMultiplier)
+    public void CastProjectile(Vector2 aDirection, float aDragForcePercentage)
     {
         if (!canShoot || projectile == null)
         {
@@ -56,8 +56,7 @@ public class Catapult : MonoBehaviour
         }
         gameManager.ShootProjectile();
         Direction = aDirection;
-        ForceMultiplier = aForceMultiplier;
-        Debug.Log(Direction.ToString() + ", " + ForceMultiplier);
+        dragForcePercentage = aDragForcePercentage;
         canShoot = false;
         animator.SetTrigger("Launch");
     }
@@ -72,7 +71,7 @@ public class Catapult : MonoBehaviour
     {
         Debug.Log("Launch");
         isFiring = false;
-        projectile.LaunchProyectile(spawnPoint.position, Direction * baseForceMagnitude * ForceMultiplier, gameManager.GetWind());
+        projectile.LaunchProyectile(spawnPoint.position, Direction * catapultForce * dragForcePercentage, gameManager.GetWind());
         StartCoroutine(ResetCanShoot());
 
     }

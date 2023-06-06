@@ -36,8 +36,10 @@ public class DragToShoot : MonoBehaviour
                     trajectory.Show();
                     isDragging = true;
                     dragStartPosition = mousePosition; // Guardar la posición de inicio del arrastre
-                
-           }
+
+                    GameManager.Instance.CameraController.TurnToCatapultCamera();
+
+            }
 
             
 

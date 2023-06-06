@@ -6,6 +6,8 @@ public class Catapult : MonoBehaviour
     public GameObject projectileGameObject;
     public GameObject aim;
     public Transform spawnPoint;
+    public Transform ProjectilCamera;
+    public Vector3 CameraTargetPointOffset;
 
     private GameManager gameManager;
     public float catapultForce;
@@ -37,6 +39,8 @@ public class Catapult : MonoBehaviour
         {
             projectile.body.transform.position = spawnPoint.position;
         }
+
+
         
     }
     public void setupProjectile()
@@ -47,6 +51,7 @@ public class Catapult : MonoBehaviour
             projectile.gameObject.SetActive(true);
             projectile.SetProjectileToShoot(spawnPoint.position);
         }
+
     }
     public void CastProjectile(Vector2 aDirection, float aDragForcePercentage)
     {
@@ -62,7 +67,7 @@ public class Catapult : MonoBehaviour
     }
     IEnumerator ResetCanShoot()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(7f);
         canShoot = true;
         setupProjectile();
 
@@ -71,6 +76,7 @@ public class Catapult : MonoBehaviour
     {
         Debug.Log("Launch");
         isFiring = false;
+        gameManager.CameraController.TurnToProjectilCamera();
         projectile.LaunchProyectile(spawnPoint.position, Direction * catapultForce * dragForcePercentage, gameManager.GetWind());
         StartCoroutine(ResetCanShoot());
 

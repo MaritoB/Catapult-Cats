@@ -81,6 +81,7 @@ public class MultipleProyectile : Projectile
     public override void HandleCollision(Collision2D aCollision)
     {
         ActivateSubProjectiles();
+        GameManager.Instance.CameraController.TurnToCastleCamera();
   
     }
 
@@ -92,8 +93,9 @@ public class MultipleProyectile : Projectile
         body.SetActive(true);
         //ps.gameObject.SetActive(true);
         body.transform.position = SpawnPosition;
+        canLaunchSubprojectiles = false;
 
-        for(int i = 0; i < subProjectiles.Length; i++)
+        for (int i = 0; i < subProjectiles.Length; i++)
         {
             Projectile p = subProjectiles[i];
             p.rb.angularVelocity = 0;

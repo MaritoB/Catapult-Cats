@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private int killedEnemies; // Número de enemigos eliminados
     private int projectileCount = 0;
     public CameraController CameraController;
+    [SerializeField]
     private bool levelCompleted; // Indica si se ha completado el nivel
     private int starRating; // Puntuación en estrellas
     [SerializeField]
@@ -70,7 +71,7 @@ public class GameManager : MonoBehaviour
         projectileCount++;
         if (projectileCount >= 3)
         {
-            StartCoroutine(EndInSeconds(6f));
+            StartCoroutine(EndInSeconds(8f));
         }
     }
 
@@ -80,22 +81,23 @@ public class GameManager : MonoBehaviour
         GameOver();
     }
 
-        public void GameOver()
+    public void GameOver()
     {
-        CalculateStarRating();
-        ShowLevelResult();
+
+        if (!levelCompleted)
+        {
+            levelCompleted = true;
+            CalculateStarRating();
+            ShowLevelResult();
+        }
     }
     public void EnemyKilled()
     {
         killedEnemies++;
 
-        if (killedEnemies >= totalEnemies)
+        if (killedEnemies == totalEnemies)
         {
-            if (projectileCount < 3)
-            {
-                levelCompleted = true;
-                StartCoroutine(EndInSeconds(2f));
-            }
+            StartCoroutine(EndInSeconds(1f));
         }
     }
 
@@ -133,6 +135,7 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator LoadAsyncScene(string aScene)
     {
+        //wait for fadeOut
         yield return new WaitForSeconds(1.9f);
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(aScene);
         while (!asyncLoad.isDone)

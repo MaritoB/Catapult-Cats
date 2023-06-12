@@ -25,6 +25,7 @@ public class FireProjectile : Projectile
         explosionPS.Emit(40);
         firePS.Stop();
         Explode();
+        GameManager.Instance.CameraController.TurnToCastleCamera();
         body.SetActive(false);
     }
     private void FixedUpdate()

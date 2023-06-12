@@ -5,26 +5,30 @@ using Cinemachine;
 
 public class CameraController : MonoBehaviour
 {
-    public CinemachineVirtualCamera CatapultCamera, ProyectilCamera, CastleCamera;
+    public CinemachineVirtualCamera CatapultCamera, ProjectilCamera, CastleCamera;
     public void TurnToCatapultCamera()
     {
         //CatapultCamera.gameObject.SetActive(true);
         CatapultCamera.enabled = true;
-        ProyectilCamera.enabled = false;
+        ProjectilCamera.enabled = false;
         CastleCamera.enabled = false;
+    }
+    public void SetFollowProjectile(Transform aTransformProjectile)
+    {
+        ProjectilCamera.Follow = aTransformProjectile;
     }
     public void TurnToProjectilCamera()
     {
         //CatapultCamera.gameObject.SetActive(true);
         CatapultCamera.enabled = false;
-        ProyectilCamera.enabled = true;
+        ProjectilCamera.enabled = true;
         CastleCamera.enabled = false;
     }
     public void TurnToCastleCamera()
     {
         //CatapultCamera.gameObject.SetActive(true);
         CatapultCamera.enabled = false;
-        ProyectilCamera.enabled = false;
+        ProjectilCamera.enabled = false;
         CastleCamera.enabled = true;
     }
 }

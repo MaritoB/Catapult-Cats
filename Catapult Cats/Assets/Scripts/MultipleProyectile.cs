@@ -44,7 +44,8 @@ public class MultipleProyectile : Projectile
     
     public void ActivateSubProjectiles()
     {
-        canLaunchSubprojectiles=false;
+        GameManager.Instance.CameraController.TurnToCastleCamera();
+        canLaunchSubprojectiles =false;
         smokePS.gameObject.SetActive(true);
         smokePS.gameObject.transform.position = body.transform.position + (Vector3)rb.velocity.normalized;
         smokePS.Emit(30);
@@ -81,7 +82,6 @@ public class MultipleProyectile : Projectile
     public override void HandleCollision(Collision2D aCollision)
     {
         ActivateSubProjectiles();
-        GameManager.Instance.CameraController.TurnToCastleCamera();
   
     }
 

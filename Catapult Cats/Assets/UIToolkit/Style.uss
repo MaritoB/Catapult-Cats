@@ -1,0 +1,39 @@
+VisualElement {
+    width: 100%;
+    height: 100%;
+}
+
+.ButtonsMainMenu {
+    background-color: rgba(255, 255, 255, 0);
+    width: 30%;
+    height: 20%;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+    background-image: url('project://database/Assets/Art/UI/UI_WoodPanel2.PNG?fileID=2800000&guid=bf1b4e73911fc674282029b90edf7759&type=3#UI_WoodPanel2');
+    -unity-background-scale-mode: scale-and-crop;
+    -unity-slice-left: 0;
+    border-left-color: rgba(0, 0, 0, 255);
+    border-right-color: rgba(0, 0, 0, 255);
+    border-top-color: rgba(0, 0, 0, 255);
+    border-bottom-color: rgba(0, 0, 0, 255);
+    font-size: 100px;
+    -unity-font: url('project://database/Assets/TextMesh%20Pro/Examples%20&%20Extras/Fonts/Bangers.ttf?fileID=12800000&guid=5dd49b3eacc540408c98eee0de38e0f1&type=3#Bangers');
+    -unity-font-style: bold;
+    -unity-text-outline-width: 0;
+    -unity-text-outline-color: rgba(0, 0, 0, 255);
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    -unity-slice-top: 0;
+    -unity-slice-right: 0;
+    -unity-slice-bottom: 0;
+    color: rgba(255, 255, 255, 255);
+    -unity-text-align: middle-center;
+    white-space: normal;
+}
+
+.ButtonsMainMenu.hover {
+}

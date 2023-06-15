@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIToolkit/Style.uss?fileID=7433441132597879392&amp;guid=972869e532decb943a095657e0dcf6a3&amp;type=3#Style" />
+    <ui:VisualElement name="Background" style="text-shadow: 0 0 0 rgb(255, 0, 0); background-image: none; -unity-background-scale-mode: scale-and-crop; flex-direction: column; flex-wrap: nowrap; justify-content: center; transform-origin: center;">
+        <ui:Button text="Play" display-tooltip-when-elided="true" name="Play" class="ButtonsMainMenu hover" />
+        <ui:Button text="Options" display-tooltip-when-elided="true" name="Options" class="ButtonsMainMenu" />
+    </ui:VisualElement>
+</ui:UXML>

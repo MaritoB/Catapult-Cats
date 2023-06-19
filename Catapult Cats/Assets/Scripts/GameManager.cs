@@ -131,7 +131,13 @@ public class GameManager : MonoBehaviour
     {
         UIEndGamePanelAnimator.SetTrigger("FadeOut");
         StartCoroutine(LoadAsyncScene(SceneManager.GetActiveScene().name));
-        
+
+    }
+    public void GoToLevelSelect()
+    {
+        UIEndGamePanelAnimator.SetTrigger("FadeOut");
+        StartCoroutine(LoadAsyncScene("LevelSelection"));
+
     }
     IEnumerator LoadAsyncScene(string aScene)
     {

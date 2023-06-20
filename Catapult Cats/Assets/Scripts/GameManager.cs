@@ -38,9 +38,11 @@ public class GameManager : MonoBehaviour
         }
         WindForce.x = Random.Range(WindForceRange.x, WindForceRange.y);
         Clouds.SetWindForce(WindForce.x);
-        if(WindPS != null)
+        if (WindPS != null)
         {
+            ParticleSystem.EmissionModule EmissionModule = WindPS.emission;
             ParticleSystem.ForceOverLifetimeModule WindForceModule = WindPS.forceOverLifetime;
+            EmissionModule.rateOverTimeMultiplier = Mathf.Abs(WindForce.x) * 10;
             WindForceModule.x = WindForce.x;
             WindForceModule.y = WindForce.y;
         }

@@ -10,6 +10,7 @@ public class Trajectory : MonoBehaviour
 	[SerializeField] float dotMinScale;
 	[SerializeField] float dotMaxScale;
 	[SerializeField] float GravityModifier;
+	[SerializeField] GameObject TrajectoryOverCatapult;
 	
 	Transform[] dotsList;
 
@@ -66,10 +67,12 @@ public class Trajectory : MonoBehaviour
 	public void Show()
 	{
 		dotsParent.SetActive(true);
+		TrajectoryOverCatapult.SetActive(true);
 	}
 
 	public void Hide()
 	{
 		dotsParent.SetActive(false);
+		TrajectoryOverCatapult.SetActive(false);
 	}
 }

@@ -23,10 +23,10 @@ public class StoneProjectile : Projectile
     {
         CurrentLife -= aCollision.relativeVelocity.magnitude;
         ImpactPS.transform.position = body.transform.position;
-        ImpactPS.Emit(5);
+        ImpactPS.Emit(1);
         if(CurrentLife < 0)
         {
-            ImpactPS.Emit(30);
+            ImpactPS.Emit(15);
             body.SetActive(false);
             GameManager.Instance.CameraController.TurnToCastleCamera();
         }

@@ -33,10 +33,9 @@ public class DragToShoot : MonoBehaviour
             if (Input.GetMouseButtonDown(0)) // Si el jugador comienza a arrastrar
             {
                     catapult.setupProjectile();
-                    trajectory.Show();
                     isDragging = true;
-                    dragStartPosition = mousePosition; // Guardar la posición de inicio del arrastre
-
+                    dragStartPosition = mousePosition;
+                    trajectory.Show();
                     GameManager.Instance.CameraController.TurnToCatapultCamera();
 
             }
@@ -51,16 +50,13 @@ public class DragToShoot : MonoBehaviour
                     dragDistance = Mathf.Clamp(dragDistance, 0, maxDragPercentage);
                     dragDirection = (dragStartPosition - dragEndPosition).normalized;
                     trajectory.UpdateDots(catapult.aim.transform.position, dragDirection * dragDistance  * TrajectoryMultiplier);
-                
-
-
             }
 
             if (Input.GetMouseButtonUp(0)) // Si el jugador suelta el arrastre
             {
                 isDragging = false;
                 trajectory.Hide();
-                if(dragDirection.x > 0)
+                if(dragDirection.x > 0 && dragDistance >10f)
                 {
                     catapult.CastProjectile(dragDirection, dragDistance );   
 

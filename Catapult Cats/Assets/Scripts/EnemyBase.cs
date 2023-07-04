@@ -8,8 +8,6 @@ public class EnemyBase : MonoBehaviour
     public float MaxLife;
     public float currentLife;
     public ParticleSystem ps;
-    [SerializeField]
-    private AudioSource[] deathSounds;
     private GameManager gameManager;
     void Start()
     {
@@ -44,7 +42,7 @@ public class EnemyBase : MonoBehaviour
         ps.transform.position = body.transform.position;
         body.SetActive(false);
         ps.Emit(30);
-        PlayDeathSound();
+        //PlayDeathSound();
         if (gameManager != null)
         {
             gameManager.EnemyKilled();
@@ -52,12 +50,14 @@ public class EnemyBase : MonoBehaviour
     }
     private void PlayDeathSound()
     {
+        /*
         if (deathSounds != null)
         {
             int index = Random.Range(0, deathSounds.Length);
             deathSounds[index].Play(); 
 
         }
+         */
     }
 
 }

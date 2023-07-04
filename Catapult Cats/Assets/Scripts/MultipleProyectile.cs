@@ -20,10 +20,10 @@ public class MultipleProyectile : Projectile
         for (int i = 0; i < subProjectiles.Length; i++)
         {
             Projectile p = subProjectiles[i];
-            p.rb.angularVelocity = 0;
-            p.rb.velocity = Vector2.zero;
-            p.rb.gravityScale = 0;
             p.body.gameObject.SetActive(false);
+            //p.rb.angularVelocity = 0;
+            //p.rb.velocity = Vector2.zero;
+            //p.rb.gravityScale = 0;
         }
 
     }
@@ -60,7 +60,7 @@ public class MultipleProyectile : Projectile
             float angle = DispersionAngle * i;
             Vector3 dispersionVector = Quaternion.Euler(0f, 0f, angle) * p.rb.velocity.normalized;
             Vector3 newDirection = dispersionVector.normalized;
-            Vector3 force = newDirection * ForceDispersionMultiplier;
+            Vector3 force = newDirection * ForceDispersionMultiplier * p.rb.mass;
             p.rb.AddForce(force, ForceMode2D.Impulse);
         }
 

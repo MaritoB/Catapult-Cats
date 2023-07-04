@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 public class LevelSelectManager : MonoBehaviour
 {
     public static LevelSelectManager Instance { get; private set; }
-    private Animator UIAnimator;
+    private Animator UIAnimator; 
+    bool isLoading;
     // Start is called before the first frame update
     void Start()
     {
+        bool isLoading = false;
         UIAnimator = GetComponent<Animator>();
     }
 
@@ -32,8 +34,13 @@ public class LevelSelectManager : MonoBehaviour
     }
     public void LoadLevel(string aName)
     {
-        UIAnimator.SetTrigger("FadeOut");
-        StartCoroutine(LoadAsyncScene(aName));
+        if (isLoading == false)
+        {
+            isLoading = true; 
+            UIAnimator.SetTrigger("FadeOut");
+            StartCoroutine(LoadAsyncScene(aName));
+
+        }
     }
 
     IEnumerator LoadAsyncScene(string aScene)

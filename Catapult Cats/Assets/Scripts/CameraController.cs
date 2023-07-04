@@ -13,9 +13,9 @@ public class CameraController : MonoBehaviour
         ProjectilCamera.enabled = false;
         CastleCamera.enabled = false;
     }
-    public void SetFollowProjectile(Transform aTransformProjectile)
+    public void SetFollowProjectile(GameObject aTransformProjectile)
     {
-        ProjectilCamera.Follow = aTransformProjectile;
+        ProjectilCamera.Follow = aTransformProjectile.transform;
     }
     public void TurnToProjectilCamera()
     {

@@ -105,4 +105,17 @@ public class MultipleProyectile : Projectile
         }
 
     }
+    public override void TurnOffProjectile()
+    {
+        body.SetActive(false);
+        smokePS.gameObject.SetActive(false);
+        for (int i = 0; i < subProjectiles.Length; i++)
+        {
+            Projectile p = subProjectiles[i];
+            p.rb.angularVelocity = 0;
+            p.rb.velocity = Vector2.zero;
+            p.rb.gravityScale = 0;
+            p.body.gameObject.SetActive(false);
+        }
+    }
 }

@@ -53,4 +53,9 @@ public class BladeProjectile : Projectile
         //ps.gameObject.SetActive(true);
         body.transform.position = SpawnPosition;
     }
+    public override void TurnOffProjectile()
+    {
+        body.SetActive(false);
+ 
+    }
 }

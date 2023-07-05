@@ -53,7 +53,11 @@ public class StoneProjectile : Projectile
         windForce = aWind;
         rb.AddForce(aForce, ForceMode2D.Impulse);
     }
-
+    public override void TurnOffProjectile()
+    {
+        body.SetActive(false);
+        ImpactPS.gameObject.SetActive(false);
+    }
 
 
 }

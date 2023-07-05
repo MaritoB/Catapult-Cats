@@ -72,5 +72,10 @@ public class FireProjectile : Projectile
 
         }
     }
-
+    public override void TurnOffProjectile()
+    {
+        body.SetActive(false);
+        firePS.gameObject.SetActive(false);
+        explosionPS.gameObject.SetActive(false);
+    }
 }

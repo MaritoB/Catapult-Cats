@@ -22,6 +22,11 @@ public class Projectile: MonoBehaviour
 
         Debug.Log("Projectil Base SetProjectileToShoot");
     }
+    public virtual void TurnOffProjectile()
+    {
+
+        Debug.Log("Projectil Base SetProjectileToShoot");
+    }
     public virtual void LaunchProyectile(Vector3 SpawnPosition, Vector3 aForce, Vector2 wind)
     {
 

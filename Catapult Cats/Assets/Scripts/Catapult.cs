@@ -3,16 +3,17 @@ using UnityEngine;
 
 public class Catapult : MonoBehaviour
 {
-    public GameObject projectileGameObject;
     public GameObject aim;
     public Transform spawnPoint;
     public Vector3 CameraTargetPointOffset;
-
+    
     private GameManager gameManager;
     public float catapultForce;
     private float dragForcePercentage;
 
-    public Projectile projectile;
+    public Projectile[] Projectiles;
+    int ProjectileIndex = 0;
+    private  Projectile CurrentProjectile;
     private Animator animator;
     private bool canShoot = true;
 
@@ -28,30 +29,50 @@ public class Catapult : MonoBehaviour
     {
         gameManager = GameManager.Instance;
         animator = GetComponent<Animator>();
-        projectile = projectileGameObject.GetComponent<Projectile>();
+        CurrentProjectile = Projectiles[0];
     }
-
+    public void SelectNextProjectile()
+    {
+        Projectiles[ProjectileIndex].TurnOffProjectile();
+        ProjectileIndex++;
+        if(ProjectileIndex >= Projectiles.Length)
+        {
+            ProjectileIndex = 0;
+        }
+        CurrentProjectile = Projectiles[ProjectileIndex];
+        setupProjectile();
+    }
+    public void SelectPreviousProjectile()
+    {
+        Projectiles[ProjectileIndex].TurnOffProjectile();
+        ProjectileIndex--;
+        if (ProjectileIndex <0)
+        {
+            ProjectileIndex = Projectiles.Length-1;
+        }
+        CurrentProjectile = Projectiles[ProjectileIndex];
+        setupProjectile();
+    }
     void LateUpdate()
     {
-        
         if (isFiring)
         {
-            projectile.body.transform.position = spawnPoint.position;
+            CurrentProjectile.body.transform.position = spawnPoint.position;
         }
     }
     public void setupProjectile()
     {
         isFiring = true;
-        if(projectileGameObject != null && projectile != null)
+        if(CurrentProjectile != null)
         {
-            projectile.gameObject.SetActive(true);
-            projectile.SetProjectileToShoot(spawnPoint.position);
+            CurrentProjectile.gameObject.SetActive(true);
+            CurrentProjectile.SetProjectileToShoot(spawnPoint.position);
         }
 
     }
     public void CastProjectile(Vector2 aDirection, float aDragForcePercentage)
     {
-        if (!canShoot || projectile == null)
+        if (!canShoot || CurrentProjectile == null)
         {
             return;
         }
@@ -75,8 +96,8 @@ public class Catapult : MonoBehaviour
         Debug.Log("Launch");
         isFiring = false;
         gameManager.CameraController.TurnToProjectilCamera();
-        gameManager.CameraController.SetFollowProjectile(projectile.body);
-        projectile.LaunchProyectile(spawnPoint.position, Direction * catapultForce * dragForcePercentage * projectile.rb.mass, gameManager.GetWind());
+        gameManager.CameraController.SetFollowProjectile(CurrentProjectile.body);
+        CurrentProjectile.LaunchProyectile(spawnPoint.position, Direction * catapultForce * dragForcePercentage * CurrentProjectile.rb.mass, gameManager.GetWind());
         StartCoroutine(ResetCanShoot());
 
     }

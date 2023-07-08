@@ -1,12 +1,15 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class FireProjectile : Projectile
 {
     public float explosionForce = 100f;
     public float explosionRadius = 5f;
-
+    public Light2D ExplosionLight;
     public ParticleSystem explosionPS;
     public ParticleSystem firePS;
+    float currentExplosionTime;
 
     private void Start()
     {
@@ -18,17 +21,34 @@ public class FireProjectile : Projectile
     private void Update()
     {
         firePS.transform.position = body.transform.position;
+        if(currentExplosionTime > 0)
+        {
+            currentExplosionTime -= Time.deltaTime;
+            Debug.Log("explo light");
+            ExplosionLight.intensity -= Time.deltaTime * 2.5f;
+        }
+        
     }
     public override void HandleCollision(Collision2D aCollision)
     {
+        explosionPS.gameObject.SetActive(true);
         explosionPS.transform.position = body.transform.position;
-        explosionPS.Emit(40);
+        explosionPS.Emit(60);
+        currentExplosionTime = 2f;
+        ExplosionLight.intensity = 5f;
+        StartCoroutine(TurnOffExplosion());
         firePS.Stop();
         Explode();
         GameManager.Instance.CameraController.TurnToCastleCamera();
         body.SetActive(false);
     }
-    private void FixedUpdate()
+    IEnumerator TurnOffExplosion()
+    {
+        yield return new WaitForSeconds(2f);
+        explosionPS.gameObject.SetActive(false);
+    }
+
+        private void FixedUpdate()
     {
         rb.AddForce(windForce);
     }

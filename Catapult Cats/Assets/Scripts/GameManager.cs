@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
+    public InGameUI gameUI;
     public int totalEnemies = 0; // Número total de enemigos en la escena
     private int killedEnemies; // Número de enemigos eliminados
     private int projectileCount = 0;
@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
         }
         //DontDestroyOnLoad(gameObject);
     }
+    
     public void AddEnemyCount()
     {
         totalEnemies++;

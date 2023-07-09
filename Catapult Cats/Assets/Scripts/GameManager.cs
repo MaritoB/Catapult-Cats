@@ -9,7 +9,8 @@ public class GameManager : MonoBehaviour
     public InGameUI gameUI;
     public int totalEnemies = 0; // Número total de enemigos en la escena
     private int killedEnemies; // Número de enemigos eliminados
-    private int projectileCount = 0;
+    private int Shoots = 0;
+    private int MaxShoots;
     public CameraController CameraController;
     [SerializeField]
     private bool levelCompleted; // Indica si se ha completado el nivel
@@ -53,7 +54,10 @@ public class GameManager : MonoBehaviour
     {
         totalEnemies++;
     }
-
+    public void SetMaxShoots(int aNumber)
+    {
+        MaxShoots = aNumber;
+    }
     void Start()
     {
         Application.targetFrameRate = 60; // Establece el FPS máximo en 60
@@ -67,18 +71,14 @@ public class GameManager : MonoBehaviour
         levelCompleted = false;
         starRating = 0;
         totalEnemies = 0;
-        projectileCount = 0;
     }
     public  void ShootProjectile()
     {
-        projectileCount++;
-        if (projectileCount >= 3)
-        {
-            StartCoroutine(EndInSeconds(8f));
-        }
+        Shoots++;
+
     }
 
-    IEnumerator EndInSeconds(float Seconds)
+    public IEnumerator EndInSeconds(float Seconds)
     {
         yield return new WaitForSeconds(Seconds);
         GameOver();
@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
 
         if (killedEnemies == totalEnemies)
         {
-            StartCoroutine(EndInSeconds(1f));
+            StartCoroutine(EndInSeconds(2f));
         }
     }
 
@@ -113,18 +113,18 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (projectileCount == 1)
-            {
-                starRating = 3;
-            }
-            else if (projectileCount == 2)
+            starRating = 1;
+            float rating = (float)Shoots /(float) MaxShoots;
+            Debug.Log("Number of Shoots: " + Shoots + " / " + MaxShoots + " = " + rating);
+            if (rating <= (2f / 3f))
             {
                 starRating = 2;
             }
-            else if (projectileCount == 3)
+            if (rating<=(1f / 3f))
             {
-                starRating = 1;
+                starRating = 3;
             }
+
         }
     }
     public Vector2 GetWind() {
@@ -154,6 +154,7 @@ public class GameManager : MonoBehaviour
     }
     private void ShowLevelResult()
     {
+        gameUI.gameObject.SetActive(false); 
         UIEndGame.SetActive(true);
         UIEndGamePanelAnimator.SetTrigger("" + starRating);
 

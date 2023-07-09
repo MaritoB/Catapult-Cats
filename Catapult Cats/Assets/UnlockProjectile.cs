@@ -6,6 +6,13 @@ public class UnlockProjectile : MonoBehaviour
 {
     // Start is called before the first frame update
     public string ProjectileName;
+    public void Start()
+    {
+        if (PlayerPrefs.GetInt(ProjectileName) == 1)
+        {
+            gameObject.SetActive(false);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

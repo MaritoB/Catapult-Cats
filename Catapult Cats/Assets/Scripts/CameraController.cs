@@ -6,6 +6,10 @@ using Cinemachine;
 public class CameraController : MonoBehaviour
 {
     public CinemachineVirtualCamera CatapultCamera, ProjectilCamera, CastleCamera;
+    private void Start()
+    {
+        TurnToCatapultCamera();
+    }
     public void TurnToCatapultCamera()
     {
         //CatapultCamera.gameObject.SetActive(true);

@@ -9,10 +9,16 @@ public class LevelSelectButton : MonoBehaviour
     [SerializeField]
     int LevelNumber;
     LevelSelectManager Manager;
+    bool isUnlocked;
     // Start is called before the first frame update
     void Start()
     {
         Manager = LevelSelectManager.Instance;
+        isUnlocked = PlayerPrefs.GetInt("HigherLevelUnlocked") >= LevelNumber;
+        if (!isUnlocked)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

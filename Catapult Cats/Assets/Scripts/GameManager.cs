@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     private int killedEnemies; // Número de enemigos eliminados
     private int Shoots = 0;
     private int MaxShoots;
+    [SerializeField]
+    private int levelNumber;
     public CameraController CameraController;
     [SerializeField]
     private bool levelCompleted; // Indica si se ha completado el nivel
@@ -37,6 +39,11 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        StartCoroutine(onStartLate());
+    }
+    IEnumerator onStartLate()
+    {
+        yield return new WaitForSeconds(0.1f);
         WindForce.x = Random.Range(WindForceRange.x, WindForceRange.y);
         Clouds.SetWindForce(WindForce.x);
         if (WindPS != null)
@@ -47,9 +54,8 @@ public class GameManager : MonoBehaviour
             WindForceModule.x = WindForce.x;
             WindForceModule.y = WindForce.y;
         }
-        //DontDestroyOnLoad(gameObject);
     }
-    
+
     public void AddEnemyCount()
     {
         totalEnemies++;
@@ -92,7 +98,36 @@ public class GameManager : MonoBehaviour
             levelCompleted = true;
             CalculateStarRating();
             ShowLevelResult();
+            SaveProgress();
         }
+    }
+    void SaveProgress()
+    {
+        if (PlayerPrefs.GetInt("HigherLevelUnlocked") <= levelNumber)
+        {
+            if (PlayerPrefs.GetInt("ScoreLevel" + levelNumber) < starRating)
+                        PlayerPrefs.SetInt("ScoreLevel" + levelNumber, starRating);
+            PlayerPrefs.SetInt("HigherLevelUnlocked", levelNumber + 1);
+            PlayerPrefs.Save();
+        }
+    }
+    public void ResetProgress()
+    {
+        int higherLevel = PlayerPrefs.GetInt("HigherLevelUnlocked");
+        for (int i = 0; i < higherLevel; i++)
+        {
+
+            PlayerPrefs.SetInt("ScoreLevel" + i, 0);
+        }
+
+        PlayerPrefs.SetInt("SmallStone", 1);
+        PlayerPrefs.SetInt("MultipleProjectiles", 0);
+        PlayerPrefs.SetInt("BigStone", 0);
+        PlayerPrefs.SetInt("Fireball", 0);
+        PlayerPrefs.SetInt("Blade", 0);
+        PlayerPrefs.SetInt("HigherLevelUnlocked", 1);
+        PlayerPrefs.Save();
+        GoToLevelSelect();
     }
     public void EnemyKilled()
     {

@@ -30,13 +30,11 @@ public class Catapult : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetInt("SmallStone", 1);
-        PlayerPrefs.Save();
-
         animator = GetComponent<Animator>();
         CurrentProjectile = Projectiles[0];
         StartCoroutine(onStartLate());
     }
+    
     IEnumerator onStartLate()
     {
         yield return new WaitForSeconds(0.1f);
@@ -56,11 +54,11 @@ public class Catapult : MonoBehaviour
         {
             Projectiles[0].UnlockProjectile();
         }
-        if (PlayerPrefs.GetInt("MultipleProjectiles") == 1)
+        if (PlayerPrefs.GetInt("BigStone") == 1)
         {
             Projectiles[1].UnlockProjectile();
         }
-        if (PlayerPrefs.GetInt("BigStone") == 1)
+        if (PlayerPrefs.GetInt("MultipleProjectiles") == 1)
         {
             Projectiles[2].UnlockProjectile();
         }

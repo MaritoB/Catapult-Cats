@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{573ab050-331a-412b-b7e0-3f2b418b9e07}">
+		<property name="assetPath">
+			<value>fx/wood-chop-axe-hit-04.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.2180208333333336</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{bd8d5a19-0a7d-47ac-b67e-2603a95a0fa6}</destination>
+		</relationship>
+	</object>
+</objects>

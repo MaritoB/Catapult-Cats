@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="ParameterPreset" id="{5e43f750-c3db-4b8a-8ec8-9e25c9bc57c7}">
+		<property name="name">
+			<value>sonidos catapulta</value>
+		</property>
+		<relationship name="folder">
+			<destination>{c74b9453-c835-4e1e-903e-c5ccfab4e6c7}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{ef0f0d0e-0246-4076-86a4-0d050255e9d8}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{ef0f0d0e-0246-4076-86a4-0d050255e9d8}">
+		<property name="parameterType">
+			<value>1</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

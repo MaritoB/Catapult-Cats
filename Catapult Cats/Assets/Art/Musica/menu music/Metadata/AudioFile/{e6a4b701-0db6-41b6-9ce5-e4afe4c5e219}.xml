@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{e6a4b701-0db6-41b6-9ce5-e4afe4c5e219}">
+		<property name="assetPath">
+			<value>fx/wooden-catapult-01.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.4533333333333331</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{bd8d5a19-0a7d-47ac-b67e-2603a95a0fa6}</destination>
+		</relationship>
+	</object>
+</objects>

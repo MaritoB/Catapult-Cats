@@ -5,13 +5,17 @@ using UnityEngine.SceneManagement;
 public class LevelSelectManager : MonoBehaviour
 {
     public static LevelSelectManager Instance { get; private set; }
-    private Animator UIAnimator; 
-    bool isLoading;
+    private Animator UIAnimator;
+    bool isLoading = false;
+    public RectTransform Player;
     // Start is called before the first frame update
     void Start()
     {
-        bool isLoading = false;
         UIAnimator = GetComponent<Animator>();
+    }
+    public void setPlayerPosition(Vector2 aPosition)
+    {
+        Player.position = aPosition + Vector2.up * 70;
     }
 
     // Update is called once per frame

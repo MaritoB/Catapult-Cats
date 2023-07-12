@@ -13,18 +13,30 @@ public class LevelSelectButton : MonoBehaviour
     int levelNumber;
     [SerializeField]
     GameObject[] Trophys;
+    [SerializeField]
+    TMPro.TextMeshProUGUI LevelNumberText;
     LevelSelectManager Manager;
     bool isUnlocked;
     // Start is called before the first frame update
     void Start()
     {
         Manager = LevelSelectManager.Instance;
-        isUnlocked = PlayerPrefs.GetInt("HigherLevelUnlocked") >= levelNumber;
+        int higherLevelUnlocked = PlayerPrefs.GetInt("HigherLevelUnlocked");
+        isUnlocked = higherLevelUnlocked  >= levelNumber;
+        if(higherLevelUnlocked == levelNumber)
+        {
+            Manager.setPlayerPosition(transform.position);
+        }
         if (!isUnlocked)
         {
             gameObject.SetActive(false);
         }
-        PlayerPrefs.GetInt("ScoreLevel" + levelNumber);
+        int trophyNumber = PlayerPrefs.GetInt("ScoreLevel" + levelNumber);
+        for (int i = 0; i < 3; i++)
+        {
+            Trophys[i].SetActive( i < trophyNumber );
+        }
+        LevelNumberText.text = levelNumber.ToString();
     }
 
     // Update is called once per frame
@@ -34,8 +46,8 @@ public class LevelSelectButton : MonoBehaviour
     }
     public void LoadLevel()
     {
-            Manager.LoadLevel(SceneName);
             AudioManager.instance.PlayOneShot(buttonPressedSound, this.transform.position);
+            Manager.LoadLevel(SceneName);
     }
 
 

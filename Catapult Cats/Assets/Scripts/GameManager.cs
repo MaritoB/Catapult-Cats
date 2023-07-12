@@ -105,19 +105,17 @@ public class GameManager : MonoBehaviour
             catapult.setCanShoot(false);
             levelCompleted = true;
             CalculateStarRating();
-            ShowLevelResult();
             SaveProgress();
+            ShowLevelResult();
         }
     }
     void SaveProgress()
     {
-        if (PlayerPrefs.GetInt("HigherLevelUnlocked") <= levelNumber)
-        {
-            if (PlayerPrefs.GetInt("ScoreLevel" + levelNumber) < starRating)
-                        PlayerPrefs.SetInt("ScoreLevel" + levelNumber, starRating);
-            PlayerPrefs.SetInt("HigherLevelUnlocked", levelNumber + 1);
+        if (PlayerPrefs.GetInt("ScoreLevel" + levelNumber) < starRating)
+                    PlayerPrefs.SetInt("ScoreLevel" + levelNumber, starRating);
+
+      
             PlayerPrefs.Save();
-        }
     }
     public void ResetProgress()
     {
@@ -170,7 +168,10 @@ public class GameManager : MonoBehaviour
             {
                 starRating = 3;
             }
-
+            if (PlayerPrefs.GetInt("HigherLevelUnlocked") <= levelNumber)
+            {
+                PlayerPrefs.SetInt("HigherLevelUnlocked", levelNumber + 1);
+            }
         }
     }
     public Vector2 GetWind() {

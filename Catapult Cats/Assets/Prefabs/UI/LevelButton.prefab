@@ -235,7 +235,11 @@ MonoBehaviour:
     Path: event:/fx/click-level
   SceneName: desert-1
   levelNumber: 0
-  Trophys: []
+  Trophys:
+  - {fileID: 7157994979228712258}
+  - {fileID: 8928414979256368714}
+  - {fileID: 3929708424583399606}
+  LevelNumberText: {fileID: 6419339612818076742}
 --- !u!1 &6419339612818076736
 GameObject:
   m_ObjectHideFlags: 0

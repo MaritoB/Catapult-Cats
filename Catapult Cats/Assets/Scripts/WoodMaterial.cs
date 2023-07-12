@@ -1,8 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 public class WoodMaterial : MonoBehaviour, MaterialType
 {
+    [SerializeField]
+    private EventReference RockHitWoodSound; 
     public GameObject body;
     private SpriteRenderer sprite;
     public GameObject FireLight;
@@ -154,6 +157,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
 
     private void Destroy()
     {
+        AudioManager.instance.PlayOneShot(RockHitWoodSound, this.transform.position);
         destroyParticles.gameObject.SetActive(true);
         destroyParticles.transform.position = body.transform.position;
         destroyParticles.Emit(10);

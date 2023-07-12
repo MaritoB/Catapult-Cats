@@ -9908,6 +9908,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50d91b2aff4f4345b738ebf0a8be719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RockHitWoodSound:
+    Guid:
+      Data1: -1555970951
+      Data2: 1253944409
+      Data3: -55120720
+      Data4: -1160430486
+    Path: event:/fx/madera
   body: {fileID: 9078683150011001531}
   FireLight: {fileID: 2099382109281570692}
   fireParticles: {fileID: 6353041438377991226}

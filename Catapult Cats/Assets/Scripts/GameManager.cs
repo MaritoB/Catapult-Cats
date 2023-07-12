@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using FMODUnity; 
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class GameManager : MonoBehaviour
     private int killedEnemies; // Número de enemigos eliminados
     private int Shoots = 0;
     private int MaxShoots;
+    [SerializeField]
+    private EventReference buttonPressedSound; 
     [SerializeField]
     private int levelNumber;
     public CameraController CameraController;
@@ -173,6 +176,7 @@ public class GameManager : MonoBehaviour
     }
     public void GoToLevelSelect()
     {
+        AudioManager.instance.PlayOneShot(buttonPressedSound, this.transform.position);
         UIEndGamePanelAnimator.SetTrigger("FadeOut");
         StartCoroutine(LoadAsyncScene("LevelSelection"));
 

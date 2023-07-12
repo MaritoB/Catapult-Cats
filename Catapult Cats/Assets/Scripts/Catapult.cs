@@ -9,7 +9,8 @@ public class Catapult : MonoBehaviour
 
     [SerializeField]
     private int Shoots;
-    
+
+    [SerializeField]
     private GameManager gameManager;
     public float catapultForce;
     private float dragForcePercentage;

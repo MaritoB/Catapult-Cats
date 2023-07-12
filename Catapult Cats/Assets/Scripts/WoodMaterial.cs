@@ -5,7 +5,9 @@ using FMODUnity;
 public class WoodMaterial : MonoBehaviour, MaterialType
 {
     [SerializeField]
-    private EventReference RockHitWoodSound; 
+    private EventReference RockHitWoodSound;
+    [SerializeField]
+    private EventReference FireBurningWoodSound;
     public GameObject body;
     private SpriteRenderer sprite;
     public GameObject FireLight;
@@ -89,6 +91,8 @@ public class WoodMaterial : MonoBehaviour, MaterialType
         {
             return;
         }
+
+        AudioManager.instance.PlayOneShot(FireBurningWoodSound, this.transform.position);
         isBurning = true;
         FireLight.SetActive(true);
         fireParticles.gameObject.SetActive(true);
@@ -157,7 +161,6 @@ public class WoodMaterial : MonoBehaviour, MaterialType
 
     private void Destroy()
     {
-        AudioManager.instance.PlayOneShot(RockHitWoodSound, this.transform.position);
         destroyParticles.gameObject.SetActive(true);
         destroyParticles.transform.position = body.transform.position;
         destroyParticles.Emit(10);

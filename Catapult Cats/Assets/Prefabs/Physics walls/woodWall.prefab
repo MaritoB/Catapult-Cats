@@ -9915,6 +9915,13 @@ MonoBehaviour:
       Data3: -55120720
       Data4: -1160430486
     Path: event:/fx/madera
+  FireBurningWoodSound:
+    Guid:
+      Data1: -375263817
+      Data2: 1171234526
+      Data3: -1415584838
+      Data4: -1880867737
+    Path: event:/fx/fuego
   body: {fileID: 9078683150011001531}
   FireLight: {fileID: 2099382109281570692}
   fireParticles: {fileID: 6353041438377991226}

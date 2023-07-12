@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     private int killedEnemies; // Número de enemigos eliminados
     private int Shoots = 0;
     private int MaxShoots;
+
+    [SerializeField]
+    Catapult catapult;
+
     [SerializeField]
     private EventReference buttonPressedSound; 
     [SerializeField]
@@ -98,6 +102,7 @@ public class GameManager : MonoBehaviour
 
         if (!levelCompleted)
         {
+            catapult.setCanShoot(false);
             levelCompleted = true;
             CalculateStarRating();
             ShowLevelResult();
@@ -144,13 +149,16 @@ public class GameManager : MonoBehaviour
 
     private void CalculateStarRating()
     {
+        CameraController.TurnToCatapultCamera();
         if (killedEnemies < totalEnemies)
         {
+            catapult.CatLoseAnimation();
             starRating = 0;
             return;
         }
         else
         {
+            catapult.CatWinAnimation();
             starRating = 1;
             float rating = (float)Shoots /(float) MaxShoots;
             Debug.Log("Number of Shoots: " + Shoots + " / " + MaxShoots + " = " + rating);
@@ -171,6 +179,7 @@ public class GameManager : MonoBehaviour
     public void ReloadLevel()
     {
         UIEndGamePanelAnimator.SetTrigger("FadeOut");
+        AudioManager.instance.PlayOneShot(buttonPressedSound, this.transform.position);
         StartCoroutine(LoadAsyncScene(SceneManager.GetActiveScene().name));
 
     }

@@ -28,7 +28,7 @@ public class DragToShoot : MonoBehaviour
     void Update()
     {
         mousePosition = Input.mousePosition;
-        if(catapult.CanShoot)
+        if(catapult.CanShoot())
         {
             if (Input.GetMouseButtonDown(0)) // Si el jugador comienza a arrastrar
             {
@@ -37,6 +37,7 @@ public class DragToShoot : MonoBehaviour
                     dragStartPosition = mousePosition;
                     trajectory.Show();
                     GameManager.Instance.CameraController.TurnToCatapultCamera();
+                    catapult.CatAimAnimation();
 
             }
 
@@ -56,10 +57,15 @@ public class DragToShoot : MonoBehaviour
             {
                 isDragging = false;
                 trajectory.Hide();
-                if(dragDirection.x > 0 && dragDistance >10f)
+                if(dragDirection.x > 0 && dragDistance >15f)
                 {
                     catapult.CastProjectile(dragDirection, dragDistance );   
+                    catapult.CatLaunchAnimation();
 
+                }
+                else
+                {
+                    catapult.CatIdleAnimation();
                 }
                 dragDirection = Vector2.zero;
                 dragDistance = 0f;

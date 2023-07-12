@@ -6,6 +6,8 @@ public class Catapult : MonoBehaviour
     public GameObject aim;
     public Transform spawnPoint;
     public Vector3 CameraTargetPointOffset;
+    [SerializeField]
+    private Animator CatAnimator;
 
     [SerializeField]
     private int Shoots;
@@ -19,13 +21,9 @@ public class Catapult : MonoBehaviour
     int ProjectileIndex = 0;
     private  Projectile CurrentProjectile;
     private Animator animator;
+    [SerializeField]
     private bool canShoot = true;
 
-    public bool CanShoot
-    {
-        get { return canShoot; }
-        private set { canShoot = value; }
-    }
     private Vector2 Direction = Vector2.zero;
     public bool isFiring = false;
 
@@ -35,7 +33,15 @@ public class Catapult : MonoBehaviour
         CurrentProjectile = Projectiles[0];
         StartCoroutine(onStartLate());
     }
-    
+
+    public bool CanShoot()
+    {
+        return canShoot;
+    }
+    public void setCanShoot(bool aBool)
+    {
+        this.canShoot = aBool;
+    }
     IEnumerator onStartLate()
     {
         yield return new WaitForSeconds(0.1f);
@@ -44,6 +50,26 @@ public class Catapult : MonoBehaviour
         gameManager.gameUI.UpdateShoots(Shoots);
         gameManager.gameUI.ChangeProjectileImage(CurrentProjectile.body.GetComponent<SpriteRenderer>().sprite);
         LoadSaves();
+    }
+    public void CatAimAnimation()
+    {
+        CatAnimator.SetTrigger("Aim");
+    }
+    public void CatWinAnimation()
+    {
+        CatAnimator.SetTrigger("Win");
+    }
+    public void CatLoseAnimation()
+    {
+        CatAnimator.SetTrigger("Lose");
+    }
+    public void CatLaunchAnimation()
+    {
+        CatAnimator.SetTrigger("Launch");
+    }
+    public void CatIdleAnimation()
+    {
+        CatAnimator.SetTrigger("Idle");
     }
     public void UnlockProjectilWithIndex(int aIndex)
     {

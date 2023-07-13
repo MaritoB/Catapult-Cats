@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{a341c479-ac59-4abd-b0ec-b6fc6a3cd5ba}">
 		<property name="name">
-			<value>madera</value>
+			<value>ImpactWood</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{9d665228-6ee4-4851-9d29-8f38c6de102d}</destination>
+			<destination>{d5e7f3aa-52a2-4cdf-8372-2121cc8e2cb8}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{dcf261dc-1f2e-45c4-8165-4a5843124a57}</destination>

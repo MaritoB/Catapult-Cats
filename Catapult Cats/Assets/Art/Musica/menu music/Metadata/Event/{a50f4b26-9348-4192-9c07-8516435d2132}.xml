@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{a50f4b26-9348-4192-9c07-8516435d2132}">
 		<property name="name">
-			<value>catapulta</value>
+			<value>Catapult</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
@@ -90,7 +90,7 @@
 	<object class="MixerBusPanner" id="{660eb863-ca1b-4204-9425-6e35fe7bf6fd}" />
 	<object class="MultiSound" id="{b4d12b04-29dd-4eee-99a0-0c07bdaeac5f}">
 		<property name="length">
-			<value>1.8</value>
+			<value>2</value>
 		</property>
 		<property name="playlistMode">
 			<value>1</value>

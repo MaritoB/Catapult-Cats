@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{e9a1edb7-9ede-45cf-bae3-9fab673ce48f}">
 		<property name="name">
-			<value>fuego</value>
+			<value>Ignite</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{9d665228-6ee4-4851-9d29-8f38c6de102d}</destination>
+			<destination>{d5e7f3aa-52a2-4cdf-8372-2121cc8e2cb8}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{61f21c30-ee54-4048-b8b5-f79d56083ed1}</destination>
@@ -91,6 +91,9 @@
 	<object class="MultiSound" id="{c8bf3a9c-fe90-452b-b824-9d83ad437f07}">
 		<property name="length">
 			<value>10</value>
+		</property>
+		<property name="volume">
+			<value>-11</value>
 		</property>
 		<property name="playlistMode">
 			<value>1</value>

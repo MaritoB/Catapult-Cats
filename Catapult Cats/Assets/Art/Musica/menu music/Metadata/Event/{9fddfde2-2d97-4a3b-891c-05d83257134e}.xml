@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{9fddfde2-2d97-4a3b-891c-05d83257134e}">
 		<property name="name">
-			<value>click-level</value>
+			<value>ClickLevel</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{9d665228-6ee4-4851-9d29-8f38c6de102d}</destination>
+			<destination>{bb0b220a-f735-4a79-a563-df7a6d4b7dbe}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{6431206c-a8fc-41aa-a051-8a190e728f38}</destination>

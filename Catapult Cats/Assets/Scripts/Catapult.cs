@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 public class Catapult : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Catapult : MonoBehaviour
     [SerializeField]
     private Animator CatAnimator;
 
+    [SerializeField]
+    private EventReference CatapultLaunchSound;
     [SerializeField]
     private int Shoots;
 
@@ -163,8 +166,8 @@ public class Catapult : MonoBehaviour
         {
             return;
         }
+        AudioManager.instance.PlayOneShot(CatapultLaunchSound, this.transform.position);
         gameManager.ShootProjectile();
-
         Direction = aDirection;
         dragForcePercentage = aDragForcePercentage;
         canShoot = false;

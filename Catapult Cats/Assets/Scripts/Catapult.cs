@@ -192,7 +192,7 @@ public class Catapult : MonoBehaviour
         gameManager.gameUI.UpdateShoots(Shoots);
         gameManager.gameUI.HideProjectileSelector();
         gameManager.CameraController.TurnToProjectilCamera();
-        gameManager.CameraController.SetFollowProjectile(CurrentProjectile.body);
+        gameManager.CameraController.SetFollowProjectile(CurrentProjectile.body.transform);
         CurrentProjectile.LaunchProyectile(spawnPoint.position, Direction * catapultForce * dragForcePercentage * CurrentProjectile.rb.mass, gameManager.GetWind());
         StartCoroutine(ResetCanShootInSeconds(7f));
 

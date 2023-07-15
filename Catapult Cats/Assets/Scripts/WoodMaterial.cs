@@ -5,9 +5,7 @@ using FMODUnity;
 public class WoodMaterial : MonoBehaviour, MaterialType
 {
     [SerializeField]
-    private EventReference RockHitWoodSound;
-    [SerializeField]
-    private EventReference FireBurningWoodSound;
+    private EventReference RockHitWoodSound, MetalHitWoodSound, FireHitWoodSound, FireBurningWoodSound;
     public GameObject body;
     private SpriteRenderer sprite;
     public GameObject FireLight;
@@ -75,12 +73,10 @@ public class WoodMaterial : MonoBehaviour, MaterialType
                 Freeze();
                 break;
             case Element.Metal:
-                // Wood gets damaged when it collides with metal
-                Damage();
+                Destroy();
                 break;
             case Element.Rock:
-                // Wood gets destroyed when it collides with rock
-                Destroy();
+                Damage();
                 break;
         }
     }
@@ -92,6 +88,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
             return;
         }
 
+        AudioManager.instance.PlayOneShot(FireHitWoodSound, this.transform.position);
         AudioManager.instance.PlayOneShot(FireBurningWoodSound, this.transform.position);
         isBurning = true;
         FireLight.SetActive(true);
@@ -103,7 +100,11 @@ public class WoodMaterial : MonoBehaviour, MaterialType
     }
     private void IgniteNearWood()
     {
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(body.transform.position, IgniteRadius);
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        Collider2D[] colliders  = new Collider2D[0];
+        
+        Physics2D.OverlapCollider(body.GetComponent<Collider2D>(), contactFilter, colliders);
+
         foreach (Collider2D collider in colliders)
         {
             WoodMaterial material = collider.GetComponentInParent<WoodMaterial>();
@@ -122,6 +123,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
             }
 
         }
+        
     }
     private IEnumerator DisableOnSeconds()
     {
@@ -134,7 +136,6 @@ public class WoodMaterial : MonoBehaviour, MaterialType
         SmokeParticles.Emit(10);
         fireParticles.Stop();
         //StartCoroutine(turnOff());
-
 
     }
     private IEnumerator turnOff()
@@ -150,20 +151,21 @@ public class WoodMaterial : MonoBehaviour, MaterialType
         iceParticles.Play();
     }
 
-    private void Damage()
+    private void Destroy()
     {
 
+        AudioManager.instance.PlayOneShot(MetalHitWoodSound, this.transform.position);
         destroyParticles.gameObject.SetActive(true);
         destroyParticles.transform.position = body.transform.position;
         destroyParticles.Emit(10);
         body.SetActive(false);
     }
 
-    private void Destroy()
+    private void Damage()
     {
+        AudioManager.instance.PlayOneShot(RockHitWoodSound, this.transform.position);
         destroyParticles.gameObject.SetActive(true);
         destroyParticles.transform.position = body.transform.position;
         destroyParticles.Emit(10);
-        gameObject.SetActive(false);
     }
 }

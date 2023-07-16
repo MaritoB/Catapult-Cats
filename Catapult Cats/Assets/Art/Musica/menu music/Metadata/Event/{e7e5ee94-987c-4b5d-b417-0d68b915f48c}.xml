@@ -2,13 +2,13 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Event" id="{e7e5ee94-987c-4b5d-b417-0d68b915f48c}">
 		<property name="name">
-			<value>Crow</value>
+			<value>CrowDeath</value>
 		</property>
 		<property name="outputFormat">
 			<value>1</value>
 		</property>
 		<relationship name="folder">
-			<destination>{baebdea8-fafa-4368-9e7e-ce1a4c513a46}</destination>
+			<destination>{d3201bbd-75f2-4581-bcfb-8e97cd0a7b90}</destination>
 		</relationship>
 		<relationship name="mixer">
 			<destination>{8ad5aff2-db13-4819-869a-d4b61f54e03a}</destination>
@@ -92,6 +92,7 @@
 		<property name="length">
 			<value>2</value>
 		</property>
+		<property name="name" />
 		<property name="playlistMode">
 			<value>1</value>
 		</property>

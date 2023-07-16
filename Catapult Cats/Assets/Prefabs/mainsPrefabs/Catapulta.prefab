@@ -992,7 +992,7 @@ MonoBehaviour:
   dotsParent: {fileID: 4686746261740064007}
   dotPrefab: {fileID: 3226765197190050944, guid: 5a5a3bef0ac189e42a4d9dc54bb7ad24, type: 3}
   dotSpacing: 0.0001
-  dotMinScale: 10
+  dotMinScale: 15
   dotMaxScale: 20
   GravityModifier: 1000000
   TrajectoryOverCatapult: {fileID: 4686746261909702025}

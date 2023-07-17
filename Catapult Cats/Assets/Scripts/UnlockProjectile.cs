@@ -5,19 +5,10 @@ using UnityEngine;
 public class UnlockProjectile : MonoBehaviour
 {
     // Start is called before the first frame update
-    public string ProjectileName;
-    public void Start()
-    {
-        if (PlayerPrefs.GetInt(ProjectileName) == 1)
-        {
-            gameObject.SetActive(false);
-        }
-    }
-
+    public int  ProjectileIndex, Amount;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        PlayerPrefs.SetInt(ProjectileName, 1);
-        PlayerPrefs.Save();
+        GameManager.Instance.AddAmmoToProjectile(ProjectileIndex, Amount);
         gameObject.SetActive(false);
 
     }

@@ -869,6 +869,7 @@ GameObject:
   - component: {fileID: 6322723723714829359}
   - component: {fileID: 6322723723714829356}
   - component: {fileID: 6322723723714829328}
+  - component: {fileID: 358136701236616432}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -981,6 +982,25 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &358136701236616432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6322723723714829357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecaa50876a2b24e4c9ae377d659bd907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TrophySound:
+    Guid:
+      Data1: -171442507
+      Data2: 1135110594
+      Data3: -461984606
+      Data4: -863588020
+    Path: event:/fx/UI/Trophy
 --- !u!1 &6322723723732704534
 GameObject:
   m_ObjectHideFlags: 0

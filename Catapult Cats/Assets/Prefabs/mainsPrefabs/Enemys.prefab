@@ -109,6 +109,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9081409969483123578, guid: 914f998cfa385824f82e864d661840bb, type: 3}
+      propertyPath: CrowSound.Path
+      value: event:/fx/characters/enemy/Crow/CrowDeath
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 914f998cfa385824f82e864d661840bb, type: 3}
 --- !u!4 &783643917326898086 stripped

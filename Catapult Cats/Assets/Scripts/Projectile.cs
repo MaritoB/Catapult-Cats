@@ -6,15 +6,30 @@ public enum Element
     Metal,
     Rock
 }
-public class Projectile: MonoBehaviour
+public class Projectile : MonoBehaviour
 {
     public GameObject body;
-    public  Rigidbody2D rb;
-    
-    private bool isUnlocked;
-    public int damage { get; set; }
+    public Rigidbody2D rb;
+    private int ammo;
+    private int _damage { get; set; }
     public  Element element { get; set; }
     protected Vector2 windForce;
+    public void AddAmmo(int aValue)
+    {
+        ammo += aValue;
+    }
+    public void SetAmmo(int aValue)
+    {
+        ammo = aValue;
+    }
+    public int GetAmmo()
+    {
+        return ammo;
+    }
+    public void UseAmmo()
+    {
+        ammo--;
+    }
     public virtual void HandleCollision(Collision2D aCollision)
     {
         Debug.Log("Projectil Base HandleCollision");
@@ -34,13 +49,6 @@ public class Projectile: MonoBehaviour
 
         Debug.Log("Projectil Base Launch");
     }
-    public void UnlockProjectile()
-    {
-        isUnlocked = true;
-    }
-    public bool IsUnlocked()
-    {
-        return isUnlocked;
-    }
+
 
 }

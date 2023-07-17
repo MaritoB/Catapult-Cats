@@ -11,9 +11,9 @@ public class Catapult : MonoBehaviour
     private Animator CatAnimator;
 
     [SerializeField]
-    private EventReference CatapultLaunchSound;
+    private EventReference CatapultLaunchSound, CatWinSound, CatLoseSound;
     [SerializeField]
-    private int Shoots;
+    private int Shoots, initialSmallStoneAmmo;
 
     [SerializeField]
     private GameManager gameManager;
@@ -49,8 +49,13 @@ public class Catapult : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         gameManager = GameManager.Instance;
-        gameManager.SetMaxShoots(Shoots);
-        gameManager.gameUI.UpdateShoots(Shoots);
+        gameManager.SetMaxShoots(Shoots); 
+        LoadSaves();
+        if (CurrentProjectile.GetAmmo() == 0)
+        {
+            SelectNextProjectile();
+        }
+        gameManager.gameUI.UpdateShoots(CurrentProjectile.GetAmmo());
         gameManager.gameUI.ChangeProjectileImage(CurrentProjectile.body.GetComponent<SpriteRenderer>().sprite);
         LoadSaves();
     }
@@ -60,10 +65,12 @@ public class Catapult : MonoBehaviour
     }
     public void CatWinAnimation()
     {
+        AudioManager.instance.PlayOneShot(CatWinSound, this.transform.position);
         CatAnimator.SetTrigger("Win");
     }
     public void CatLoseAnimation()
     {
+        AudioManager.instance.PlayOneShot(CatLoseSound, this.transform.position);
         CatAnimator.SetTrigger("Lose");
     }
     public void CatLaunchAnimation()
@@ -74,32 +81,34 @@ public class Catapult : MonoBehaviour
     {
         CatAnimator.SetTrigger("Idle");
     }
-    public void UnlockProjectilWithIndex(int aIndex)
+    public void AddAmmoToProjectile(int aProjectileIndex, int aAmount )
     {
-        Projectiles[aIndex].UnlockProjectile();
+        Projectiles[aProjectileIndex].AddAmmo(aAmount);
     }
     public void LoadSaves()
     {
-        if (PlayerPrefs.GetInt("SmallStone") == 1)
-        {
-            Projectiles[0].UnlockProjectile();
-        }
-        if (PlayerPrefs.GetInt("BigStone") == 1)
-        {
-            Projectiles[1].UnlockProjectile();
-        }
-        if (PlayerPrefs.GetInt("MultipleProjectiles") == 1)
-        {
-            Projectiles[2].UnlockProjectile();
-        }
-        if (PlayerPrefs.GetInt("Blade") == 1)
-        {
-            Projectiles[3].UnlockProjectile();
-        }
-        if (PlayerPrefs.GetInt("Fireball") == 1)
-        {
-            Projectiles[4].UnlockProjectile();
-        }
+            Projectiles[0].SetAmmo(PlayerPrefs.GetInt("SmallStone"));
+            Projectiles[1].SetAmmo(PlayerPrefs.GetInt("BigStone"));
+            Projectiles[2].SetAmmo(PlayerPrefs.GetInt("MultipleProjectiles"));
+            Projectiles[3].SetAmmo(PlayerPrefs.GetInt("Blade"));
+            Projectiles[4].SetAmmo(PlayerPrefs.GetInt("Fireball"));
+    }
+    public void Save()
+    {
+        PlayerPrefs.SetInt("SmallStone", Projectiles[0].GetAmmo());
+        PlayerPrefs.SetInt("BigStone", Projectiles[1].GetAmmo());
+        PlayerPrefs.SetInt("MultipleProjectiles", Projectiles[2].GetAmmo());
+        PlayerPrefs.SetInt("Blade", Projectiles[3].GetAmmo());
+        PlayerPrefs.SetInt("Fireball", Projectiles[4].GetAmmo());
+    }
+    public void ResetProgress()
+    {
+        PlayerPrefs.SetInt("SmallStone", initialSmallStoneAmmo);
+        PlayerPrefs.SetInt("BigStone", 0);
+        PlayerPrefs.SetInt("MultipleProjectiles", 0);
+        PlayerPrefs.SetInt("Blade", 0);
+        PlayerPrefs.SetInt("Fireball",0);
+
     }
     public void ResetShoot()
     {
@@ -107,34 +116,50 @@ public class Catapult : MonoBehaviour
     }
     public void SelectNextProjectile()
     {
+        if(CalculateShootsRemaining() <= 0)
+        {
+            Debug.Log("No More Projectiles");
+            gameManager.ResetProgress();
+            gameManager.EndInSeconds(0);
+            return;
+        }
         Projectiles[ProjectileIndex].TurnOffProjectile();
         ProjectileIndex++;
         if(ProjectileIndex >= Projectiles.Length)
         {
             ProjectileIndex = 0;
         }
-        if (!Projectiles[ProjectileIndex].IsUnlocked()){
+        if (Projectiles[ProjectileIndex].GetAmmo()<=0){
             SelectNextProjectile();
             return;
         }
         CurrentProjectile = Projectiles[ProjectileIndex];
+        gameManager.gameUI.UpdateShoots(CurrentProjectile.GetAmmo());
         gameManager.gameUI.ChangeProjectileImage(CurrentProjectile.body.GetComponent<SpriteRenderer>().sprite);
         setupProjectile();
     }
     public void SelectPreviousProjectile()
     {
+        if (CalculateShootsRemaining() == 0)
+        {
+            ResetProgress();
+            gameManager.ResetProgress();
+            gameManager.EndInSeconds(0);
+            return;
+        }
         Projectiles[ProjectileIndex].TurnOffProjectile();
         ProjectileIndex--;
         if (ProjectileIndex <0)
         {
             ProjectileIndex = Projectiles.Length-1;
         }
-        if (!Projectiles[ProjectileIndex].IsUnlocked())
+        if (Projectiles[ProjectileIndex].GetAmmo() <= 0)
         {
             SelectPreviousProjectile();
             return;
         }
         CurrentProjectile = Projectiles[ProjectileIndex];
+        gameManager.gameUI.UpdateShoots(CurrentProjectile.GetAmmo());
         gameManager.gameUI.ChangeProjectileImage(CurrentProjectile.body.GetComponent<SpriteRenderer>().sprite);
         setupProjectile();
     }
@@ -154,11 +179,25 @@ public class Catapult : MonoBehaviour
         isFiring = true;
         if(CurrentProjectile != null)
         {
+            if (CurrentProjectile.GetAmmo() == 0)
+            {
+                SelectNextProjectile();
+            }
+            gameManager.gameUI.UpdateShoots(CurrentProjectile.GetAmmo());
             CurrentProjectile.gameObject.SetActive(true);
             CurrentProjectile.SetProjectileToShoot(spawnPoint.position);
         }
 
 
+    }
+    public int CalculateShootsRemaining()
+    {
+        int sum = 0;
+        for (int i = 0; i < Projectiles.Length; i++)
+        {
+            sum  += Projectiles[i].GetAmmo();
+        }
+        return sum;
     }
     public void CastProjectile(Vector2 aDirection, float aDragForcePercentage)
     {
@@ -166,7 +205,10 @@ public class Catapult : MonoBehaviour
         {
             return;
         }
+        CurrentProjectile.UseAmmo();
+        gameManager.gameUI.UpdateShoots(CurrentProjectile.GetAmmo());
         AudioManager.instance.PlayOneShot(CatapultLaunchSound, this.transform.position);
+        gameManager.gameUI.HideProjectileSelector();
         gameManager.ShootProjectile();
         Direction = aDirection;
         dragForcePercentage = aDragForcePercentage;
@@ -189,8 +231,6 @@ public class Catapult : MonoBehaviour
         Debug.Log("Launch");
         isFiring = false;
         Shoots--;
-        gameManager.gameUI.UpdateShoots(Shoots);
-        gameManager.gameUI.HideProjectileSelector();
         gameManager.CameraController.TurnToProjectilCamera();
         gameManager.CameraController.SetFollowProjectile(CurrentProjectile.body.transform);
         CurrentProjectile.LaunchProyectile(spawnPoint.position, Direction * catapultForce * dragForcePercentage * CurrentProjectile.rb.mass, gameManager.GetWind());

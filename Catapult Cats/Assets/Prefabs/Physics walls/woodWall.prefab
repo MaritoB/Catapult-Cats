@@ -9910,32 +9910,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RockHitWoodSound:
     Guid:
-      Data1: -1555970951
-      Data2: 1253944409
-      Data3: -55120720
-      Data4: -1160430486
-    Path: event:/fx/materials/wood/ImpactWood
+      Data1: 367759565
+      Data2: 1289528068
+      Data3: -1006672746
+      Data4: -1105983331
+    Path: event:/fx/projectiles/impact/WoodImpact
   MetalHitWoodSound:
     Guid:
-      Data1: -1555970951
-      Data2: 1253944409
-      Data3: -55120720
-      Data4: -1160430486
-    Path: event:/fx/materials/wood/ImpactWood
+      Data1: 367759565
+      Data2: 1289528068
+      Data3: -1006672746
+      Data4: -1105983331
+    Path: event:/fx/projectiles/impact/WoodImpact
   FireHitWoodSound:
     Guid:
-      Data1: -1555970951
-      Data2: 1253944409
-      Data3: -55120720
-      Data4: -1160430486
-    Path: event:/fx/materials/wood/ImpactWood
+      Data1: 367759565
+      Data2: 1289528068
+      Data3: -1006672746
+      Data4: -1105983331
+    Path: event:/fx/projectiles/impact/WoodImpact
   FireBurningWoodSound:
     Guid:
-      Data1: -1555970951
-      Data2: 1253944409
-      Data3: -55120720
-      Data4: -1160430486
-    Path: event:/fx/materials/wood/ImpactWood
+      Data1: -375263817
+      Data2: 1171234526
+      Data3: -1415584838
+      Data4: -1880867737
+    Path: event:/fx/materials/wood/Ignite
   body: {fileID: 9078683150011001531}
   FireLight: {fileID: 2099382109281570692}
   fireParticles: {fileID: 6353041438377991226}

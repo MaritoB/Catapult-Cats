@@ -79,6 +79,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameUI: {fileID: 0}
   totalEnemies: 1
+  catapult: {fileID: 0}
+  buttonPressedSound:
+    Guid:
+      Data1: -1612841502
+      Data2: 1245392279
+      Data3: -670753655
+      Data4: 1309890354
+    Path: event:/fx/UI/ClickLevel
+  WindSound:
+    Guid:
+      Data1: 1251424635
+      Data2: 1340929951
+      Data3: 1298318494
+      Data4: -1976936417
+    Path: event:/ambience/desert/Wind
   levelNumber: 1
   CameraController: {fileID: 0}
   levelCompleted: 0

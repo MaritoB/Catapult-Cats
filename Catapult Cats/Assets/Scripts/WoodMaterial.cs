@@ -90,6 +90,7 @@ public class WoodMaterial : MonoBehaviour, MaterialType
 
         AudioManager.instance.PlayOneShot(FireHitWoodSound, this.transform.position);
         AudioManager.instance.PlayOneShot(FireBurningWoodSound, this.transform.position);
+
         isBurning = true;
         FireLight.SetActive(true);
         fireParticles.gameObject.SetActive(true);

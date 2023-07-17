@@ -822,12 +822,27 @@ MonoBehaviour:
   CatAnimator: {fileID: 1449482449980628021}
   CatapultLaunchSound:
     Guid:
-      Data1: -1525724378
-      Data2: 1100125000
-      Data3: 377816988
-      Data4: 841047363
-    Path: event:/fx/Catapult
+      Data1: 818870196
+      Data2: 1216913560
+      Data3: -515770695
+      Data4: -300468551
+    Path: event:/fx/catapult
+  CatWinSound:
+    Guid:
+      Data1: 90387498
+      Data2: 1180540679
+      Data3: -1387886718
+      Data4: -1850385171
+    Path: event:/fx/characters/cat/CatWin
+  CatLoseSound:
+    Guid:
+      Data1: -260851025
+      Data2: 1225892553
+      Data3: -1935945560
+      Data4: 1486847488
+    Path: event:/fx/UI/LooseSound
   Shoots: 3
+  initialSmallStoneAmmo: 10
   gameManager: {fileID: 0}
   catapultForce: 0.5
   Projectiles:
@@ -988,7 +1003,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: accd321e9dacb1e48948fe83b5d9288e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dotsNumber: 50
+  dotsNumber: 30
   dotsParent: {fileID: 4686746261740064007}
   dotPrefab: {fileID: 3226765197190050944, guid: 5a5a3bef0ac189e42a4d9dc54bb7ad24, type: 3}
   dotSpacing: 0.0001

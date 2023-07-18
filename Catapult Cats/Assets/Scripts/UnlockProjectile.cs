@@ -8,7 +8,8 @@ public class UnlockProjectile : MonoBehaviour
     public int  ProjectileIndex, Amount;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GameManager.Instance.AddAmmoToProjectile(ProjectileIndex, Amount);
+        GameManager.Instance.AddAmmoToProjectile(ProjectileIndex, Amount, GetComponentInChildren<SpriteRenderer>().sprite);
+        //Sound and Particles
         gameObject.SetActive(false);
 
     }

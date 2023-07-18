@@ -101,11 +101,10 @@ public class WoodMaterial : MonoBehaviour, MaterialType
     }
     private void IgniteNearWood()
     {
-        ContactFilter2D contactFilter = new ContactFilter2D();
-        Collider2D[] colliders  = new Collider2D[0];
-        
-        Physics2D.OverlapCollider(body.GetComponent<Collider2D>(), contactFilter, colliders);
-
+        //ContactFilter2D contactFilter = new ContactFilter2D();
+        //Collider2D[] colliders  = new Collider2D[0];
+        //Physics2D.OverlapCollider(body.GetComponent<Collider2D>(), contactFilter, colliders);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(body.transform.position, IgniteRadius);
         foreach (Collider2D collider in colliders)
         {
             WoodMaterial material = collider.GetComponentInParent<WoodMaterial>();

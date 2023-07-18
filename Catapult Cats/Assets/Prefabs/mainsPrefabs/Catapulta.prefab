@@ -841,7 +841,7 @@ MonoBehaviour:
       Data3: -1935945560
       Data4: 1486847488
     Path: event:/fx/UI/LooseSound
-  Shoots: 3
+  Shoots: 6
   initialSmallStoneAmmo: 10
   gameManager: {fileID: 0}
   catapultForce: 0.5
@@ -1003,13 +1003,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: accd321e9dacb1e48948fe83b5d9288e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dotsNumber: 30
+  dotsNumber: 70
   dotsParent: {fileID: 4686746261740064007}
   dotPrefab: {fileID: 3226765197190050944, guid: 5a5a3bef0ac189e42a4d9dc54bb7ad24, type: 3}
   dotSpacing: 0.0001
   dotMinScale: 15
   dotMaxScale: 20
-  GravityModifier: 1000000
+  GravityModifier: 900000
   TrajectoryOverCatapult: {fileID: 4686746261909702025}
 --- !u!114 &4686746260889608864
 MonoBehaviour:

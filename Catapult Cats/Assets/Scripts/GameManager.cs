@@ -164,12 +164,12 @@ public class GameManager : MonoBehaviour
             if (rating<=(1f / 3f))
             {
                 starRating = 3;
+                AddAmmoToProjectile(0, 1, catapult.Projectiles[0].body.GetComponent<Sprite>());
             }
             if (PlayerPrefs.GetInt("HigherLevelUnlocked") <= levelNumber)
             {
                 PlayerPrefs.SetInt("HigherLevelUnlocked", levelNumber + 1);
             }
-            catapult.AddAmmoToProjectile(0, starRating);
         }
     }
     public Vector2 GetWind() {
@@ -182,10 +182,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadAsyncScene(SceneManager.GetActiveScene().name));
 
     }
-    public void AddAmmoToProjectile(int aProjectileIndex, int aAmmount)
+    public void AddAmmoToProjectile(int aProjectileIndex, int aAmmount, Sprite aSprite)
     {
-        catapult.AddAmmoToProjectile(aProjectileIndex, aAmmount);
+        gameUI.AddProjectile(aSprite, aAmmount);
         // Add ammo animation or text---
+        catapult.AddAmmoToProjectile(aProjectileIndex, aAmmount);
 
     }
     public void GoToLevelSelect()

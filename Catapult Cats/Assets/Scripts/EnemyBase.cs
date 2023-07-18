@@ -10,11 +10,13 @@ public class EnemyBase : MonoBehaviour
     public float currentLife;
     public ParticleSystem ps;
     private GameManager gameManager;
+    private bool isDead;
     [SerializeField]
     private EventReference CrowSound;
     void Start()
     {
         currentLife = MaxLife;
+        isDead = false;
         gameManager = GameManager.Instance;
         StartCoroutine(AddEnemyCount());
     }
@@ -34,8 +36,9 @@ public class EnemyBase : MonoBehaviour
     public void ReciveDamage(float aDamage)
     {
         currentLife -= aDamage;
-        if (currentLife < 0)
+        if (currentLife < 0 && isDead==false)
         {
+            isDead = true;
             Die();
         }
     }

@@ -9945,7 +9945,7 @@ MonoBehaviour:
   SmokeParticles: {fileID: 2094599503447221515}
   IgniteTime: 4
   IgniteOthersTime: 1
-  IgniteRadius: 1
+  IgniteRadius: 2
   burningDamage: 3
 --- !u!1 &7303368952206083726
 GameObject:

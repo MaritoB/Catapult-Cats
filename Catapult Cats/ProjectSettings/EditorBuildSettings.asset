@@ -6,11 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Levels/desert-1.unity
-    guid: c5abd935d66f26b4db4b10df4af09457
+    path: Assets/Scenes/Levels/MainMenu.unity
+    guid: 72bdcf0e75d38b1429d71a6bc6787a90
   - enabled: 1
     path: Assets/Scenes/Levels/LevelSelection.unity
     guid: d83219d86b2fb134da27673e2a4ad7e2
+  - enabled: 1
+    path: Assets/Scenes/Levels/desert-1.unity
+    guid: c5abd935d66f26b4db4b10df4af09457
   - enabled: 1
     path: Assets/Scenes/Levels/desert-2.unity
     guid: a21c47ca70d537240917fbd80b423869

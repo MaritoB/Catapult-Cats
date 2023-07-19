@@ -164,7 +164,6 @@ public class GameManager : MonoBehaviour
             if (rating<=(1f / 3f))
             {
                 starRating = 3;
-                AddAmmoToProjectile(0, 1, catapult.Projectiles[0].body.GetComponent<Sprite>());
             }
             if (PlayerPrefs.GetInt("HigherLevelUnlocked") <= levelNumber)
             {
@@ -194,6 +193,13 @@ public class GameManager : MonoBehaviour
         AudioManager.instance.PlayOneShot(buttonPressedSound, this.transform.position);
         UIEndGamePanelAnimator.SetTrigger("FadeOut");
         StartCoroutine(LoadAsyncScene("LevelSelection"));
+
+    }
+    public void GoToMainMenu()
+    {
+        AudioManager.instance.PlayOneShot(buttonPressedSound, this.transform.position);
+        UIEndGamePanelAnimator.SetTrigger("FadeOut");
+        StartCoroutine(LoadAsyncScene("MainMenu"));
 
     }
     IEnumerator LoadAsyncScene(string aScene)

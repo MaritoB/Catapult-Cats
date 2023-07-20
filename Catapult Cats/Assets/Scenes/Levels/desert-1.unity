@@ -2062,31 +2062,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3469163318085150118, guid: 16453eaadba73f043a5edd8ce9bf53cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 45.75
+      value: 35.434998
       objectReference: {fileID: 0}
     - target: {fileID: 3469163318085150118, guid: 16453eaadba73f043a5edd8ce9bf53cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.6
+      value: 6.83
       objectReference: {fileID: 0}
     - target: {fileID: 3469163318085150118, guid: 16453eaadba73f043a5edd8ce9bf53cc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -10.000003
       objectReference: {fileID: 0}
     - target: {fileID: 3469163318085150118, guid: 16453eaadba73f043a5edd8ce9bf53cc, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.000000011353269
       objectReference: {fileID: 0}
     - target: {fileID: 3469163318085150118, guid: 16453eaadba73f043a5edd8ce9bf53cc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.000000090826155
       objectReference: {fileID: 0}
     - target: {fileID: 3469163318085150118, guid: 16453eaadba73f043a5edd8ce9bf53cc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 1.0311739e-15
       objectReference: {fileID: 0}
     - target: {fileID: 3469163318085150119, guid: 16453eaadba73f043a5edd8ce9bf53cc, type: 3}
       propertyPath: orthographic size
-      value: 10
+      value: 11.837109
       objectReference: {fileID: 0}
     - target: {fileID: 3469163318186505156, guid: 16453eaadba73f043a5edd8ce9bf53cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3143,6 +3143,10 @@ PrefabInstance:
     - target: {fileID: 6322723723714829357, guid: a475a939586ff3a40bc440e666084196, type: 3}
       propertyPath: m_Name
       value: UICanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322723723714829359, guid: a475a939586ff3a40bc440e666084196, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6322723723759027106, guid: a475a939586ff3a40bc440e666084196, type: 3}
       propertyPath: m_IsActive

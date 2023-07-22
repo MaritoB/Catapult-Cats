@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        Application.targetFrameRate = 60; // Establece el FPS máximo en 60
+        Application.targetFrameRate = 30; // Establece el FPS máximo en 60
         InitializeLevel();
         UIEndGamePanelAnimator = UIEndGame.GetComponent<Animator>();
     }

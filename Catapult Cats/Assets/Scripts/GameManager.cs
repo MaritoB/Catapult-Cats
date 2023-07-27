@@ -57,10 +57,13 @@ public class GameManager : MonoBehaviour
         {
             ParticleSystem.EmissionModule EmissionModule = WindPS.emission;
             ParticleSystem.ForceOverLifetimeModule WindForceModule = WindPS.forceOverLifetime;
-            EmissionModule.rateOverTimeMultiplier = Mathf.Abs(WindForce.x) * 10;
+            EmissionModule.rateOverTimeMultiplier = Mathf.Abs(WindForce.x);
             WindForceModule.x = WindForce.x;
             WindForceModule.y = WindForce.y;
-            //AudioManager.instance.PlayOneShot(WindSound, this.transform.position);
+            if(WindForce.magnitude > 2)
+            {
+                AudioManager.instance.PlayOneShot(WindSound, this.transform.position);
+            }
         }
     }
    
@@ -74,7 +77,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        Application.targetFrameRate = 30; // Establece el FPS máximo en 60
+        Application.targetFrameRate = 30;
         InitializeLevel();
         UIEndGamePanelAnimator = UIEndGame.GetComponent<Animator>();
     }
@@ -100,7 +103,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-
         if (!levelCompleted)
         {
             catapult.setCanShoot(false);
@@ -130,7 +132,7 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("HigherLevelUnlocked", 1);
         catapult.ResetProgress();
         PlayerPrefs.Save();
-        GoToLevelSelect();
+        GoToMainMenu();
     }
     public void EnemyKilled()
     {

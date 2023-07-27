@@ -501,34 +501,9 @@ PolygonCollider2D:
       - {x: 4.54, y: 0.35}
       - {x: 4.41, y: 0.35999998}
       - {x: 4.16, y: 0.38}
-      - {x: 4, y: 0.39}
-      - {x: 3.81, y: 0.39999998}
       - {x: 3.6599998, y: 0.41}
-      - {x: 3.26, y: 0.48999998}
-      - {x: 3, y: 0.55}
-      - {x: 2.82, y: 0.59}
-      - {x: 2.77, y: 0.59}
-      - {x: 2.69, y: 0.58}
-      - {x: 2.58, y: 0.53}
-      - {x: 2.2, y: 0.45}
-      - {x: 2.11, y: 0.44}
-      - {x: 1.91, y: 0.42999998}
-      - {x: 1.9, y: 0.42}
-      - {x: 1.43, y: 0.42}
-      - {x: 1.42, y: 0.42999998}
-      - {x: 1.15, y: 0.5}
-      - {x: 0.87, y: 0.58}
-      - {x: 0.78, y: 0.57}
-      - {x: 0.62, y: 0.52}
-      - {x: 0.59, y: 0.51}
-      - {x: 0.48, y: 0.51}
-      - {x: 0.11, y: 0.58}
-      - {x: -0.12, y: 0.63}
-      - {x: -0.29999998, y: 0.66999996}
-      - {x: -0.34, y: 0.66999996}
-      - {x: -0.68, y: 0.84}
-      - {x: -0.83, y: 0.90999997}
-      - {x: -0.84999996, y: 0.93}
+      - {x: 2.6148732, y: -0.0023134798}
+      - {x: 0.9740829, y: -0.026539683}
       - {x: -1.1, y: 1.1}
       - {x: -1.17, y: 1.15}
       - {x: -1.29, y: 1.23}
@@ -3148,6 +3123,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -21.269999
       objectReference: {fileID: 0}
+    - target: {fileID: 3469163318186505156, guid: 16453eaadba73f043a5edd8ce9bf53cc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.49
+      objectReference: {fileID: 0}
     - target: {fileID: 3469163318186505159, guid: 16453eaadba73f043a5edd8ce9bf53cc, type: 3}
       propertyPath: m_Follow
       value: 
@@ -3480,7 +3459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4686746260817851363, guid: 608dced7004a1764db5652af7bc1b548, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.06
+      value: 1.02
       objectReference: {fileID: 0}
     - target: {fileID: 4686746260817851363, guid: 608dced7004a1764db5652af7bc1b548, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4158,6 +4137,14 @@ PrefabInstance:
     - target: {fileID: 6322723724362866512, guid: a475a939586ff3a40bc440e666084196, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToLevelSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 7939098274850791897, guid: a475a939586ff3a40bc440e666084196, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1169694264}
+    - target: {fileID: 7939098274850791897, guid: a475a939586ff3a40bc440e666084196, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMainMenu
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a475a939586ff3a40bc440e666084196, type: 3}

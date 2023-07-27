@@ -3054,6 +3054,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToLevelSelect
       objectReference: {fileID: 0}
+    - target: {fileID: 7939098274850791897, guid: a475a939586ff3a40bc440e666084196, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1169694264}
+    - target: {fileID: 7939098274850791897, guid: a475a939586ff3a40bc440e666084196, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToMainMenu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a475a939586ff3a40bc440e666084196, type: 3}
 --- !u!1001 &7328136623316359767

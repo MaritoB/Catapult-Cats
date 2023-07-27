@@ -1027,7 +1027,6 @@ MonoBehaviour:
   maxDragPercentage: 50
   TrajectoryMultiplier: 150
   dragDistance: 0
-  mousePosition: {x: 0, y: 0}
   trajectory: {fileID: 4686746260889608865}
 --- !u!1 &4686746260913670224
 GameObject:
@@ -2510,6 +2509,10 @@ PrefabInstance:
     - target: {fileID: 345565953698383747, guid: c022507f17313bd45852e95fec9dd53d, type: 3}
       propertyPath: m_Mass
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 345565953779420252, guid: c022507f17313bd45852e95fec9dd53d, type: 3}
+      propertyPath: m_Mass
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 345565953851325362, guid: c022507f17313bd45852e95fec9dd53d, type: 3}
       propertyPath: m_RootOrder

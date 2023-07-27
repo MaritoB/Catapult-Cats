@@ -8,13 +8,20 @@ public class MainMenu : MonoBehaviour
 {
     // Start is called before the first frame update
     public int initialSmallStoneAmmo;
+    [SerializeField]
+    private Animator CatAnimator;
     Animator animator;
+    [SerializeField]
+    private GameObject ContinueButton;
     [SerializeField]
     private EventReference buttonPressedSound, MainMenuMusic;
     void Start()
     {
         animator = GetComponent<Animator>();
+        ContinueButton.SetActive(PlayerPrefs.GetInt("HigherLevelUnlocked") > 1);
+        animator.SetTrigger("FadeIn");
         StartCoroutine(onStartLate());
+
     }
     IEnumerator onStartLate()
     {
@@ -28,7 +35,16 @@ public class MainMenu : MonoBehaviour
         ResetProgress();
         AudioManager.instance.PlayOneShot(buttonPressedSound, this.transform.position);
         animator.SetTrigger("FadeOut");
+        CatAnimator.SetTrigger("Win");
         StartCoroutine(LoadAsyncScene("LevelSelection"));
+    }
+    public void ContinueGame()
+    {
+        AudioManager.instance.PlayOneShot(buttonPressedSound, this.transform.position);
+        animator.SetTrigger("FadeOut");
+        CatAnimator.SetTrigger("Win");
+        StartCoroutine(LoadAsyncScene("LevelSelection"));
+
     }
     IEnumerator LoadAsyncScene(string aScene)
     {

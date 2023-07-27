@@ -116,13 +116,6 @@ public class Catapult : MonoBehaviour
     }
     public void SelectNextProjectile()
     {
-        if(CalculateShootsRemaining() <= 0)
-        {
-            Debug.Log("No More Projectiles");
-            gameManager.ResetProgress();
-            gameManager.EndInSeconds(0);
-            return;
-        }
         Projectiles[ProjectileIndex].TurnOffProjectile();
         ProjectileIndex++;
         if(ProjectileIndex >= Projectiles.Length)
@@ -140,13 +133,7 @@ public class Catapult : MonoBehaviour
     }
     public void SelectPreviousProjectile()
     {
-        if (CalculateShootsRemaining() == 0)
-        {
-            ResetProgress();
-            gameManager.ResetProgress();
-            gameManager.EndInSeconds(0);
-            return;
-        }
+        
         Projectiles[ProjectileIndex].TurnOffProjectile();
         ProjectileIndex--;
         if (ProjectileIndex <0)
@@ -176,6 +163,13 @@ public class Catapult : MonoBehaviour
     }
     public void setupProjectile()
     {
+        if (CalculateShootsRemaining() <= 0)
+        {
+            // GAME OVER
+            gameManager.ResetProgress();
+            gameManager.EndInSeconds(0);
+            return;
+        }
         isFiring = true;
         if(CurrentProjectile != null)
         {
@@ -228,7 +222,6 @@ public class Catapult : MonoBehaviour
     }
     public void LaunchProyectil()
     {
-        Debug.Log("Launch");
         isFiring = false;
         Shoots--;
         gameManager.CameraController.TurnToProjectilCamera();

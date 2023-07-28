@@ -13,53 +13,101 @@ public class DragToShoot : MonoBehaviour
     [SerializeField]
     private float TrajectoryMultiplier;
     public float dragDistance;
-    public Vector2 mousePosition;
     public Trajectory trajectory;
     Vector2 Resolution;
+    private bool isMobile;
 
-
+    void Update()
+    {
+        if (isMobile)
+        {
+            UseTouchInput();
+        }
+        else
+        {
+            UseMouseInput();
+        }
+    }
 
     void Start()
     {
         Resolution.x = Screen.currentResolution.width;
         Resolution.y = Screen.currentResolution.height;
+        isMobile = Application.isMobilePlatform;
     }
-
-    void Update()
+    void UseTouchInput()
     {
-        mousePosition = Input.mousePosition;
-        if(catapult.CanShoot())
+        if (catapult.CanShoot())
         {
-            if (Input.GetMouseButtonDown(0)) // Si el jugador comienza a arrastrar
+            if (Input.touchCount > 0)
             {
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Began) 
+                {
                     catapult.setupProjectile();
                     isDragging = true;
-                    dragStartPosition = mousePosition;
+                    dragStartPosition = touch.position;
                     trajectory.Show();
                     GameManager.Instance.CameraController.TurnToCatapultCamera();
                     catapult.CatAimAnimation();
-
-            }
-
-            
-
-            if (isDragging) // Si el jugador sigue arrastrando
-            {
- 
-                    dragEndPosition = mousePosition; // Guardar la posición final del arrastre
-                    dragDistance =  Vector2.Distance((dragStartPosition*100)/Resolution, (dragEndPosition*100)/Resolution) ; // Calcular la distancia del arrastre
+                }
+                if (touch.phase == TouchPhase.Moved)
+                {
+                    dragEndPosition = touch.position;
+                    dragDistance = Vector2.Distance((dragStartPosition * 100) / Resolution, (dragEndPosition * 100) / Resolution); 
                     dragDistance = Mathf.Clamp(dragDistance, 0, maxDragPercentage);
                     dragDirection = (dragStartPosition - dragEndPosition).normalized;
-                    trajectory.UpdateDots(catapult.aim.transform.position, dragDirection * dragDistance  * TrajectoryMultiplier);
-            }
+                    trajectory.UpdateDots(catapult.aim.transform.position, dragDirection * dragDistance * TrajectoryMultiplier);
+                }
 
-            if (Input.GetMouseButtonUp(0)) // Si el jugador suelta el arrastre
+                if (touch.phase == TouchPhase.Ended) 
+                {
+                    isDragging = false;
+                    trajectory.Hide();
+                    if (dragDirection.x > 0 && dragDistance > 15f)
+                    {
+                        catapult.CastProjectile(dragDirection, dragDistance);
+                        catapult.CatLaunchAnimation();
+                    }
+                    else
+                    {
+                        catapult.CatIdleAnimation();
+                    }
+                    dragDirection = Vector2.zero;
+                    dragDistance = 0f;
+                }
+            }
+        }
+    }
+    void UseMouseInput()
+    {
+        if (catapult.CanShoot())
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                catapult.setupProjectile();
+                isDragging = true;
+                dragStartPosition = Input.mousePosition;
+                trajectory.Show();
+                GameManager.Instance.CameraController.TurnToCatapultCamera();
+                catapult.CatAimAnimation();
+            }
+            if (isDragging) 
+            {
+                dragEndPosition = Input.mousePosition; ; 
+                dragDistance = Vector2.Distance((dragStartPosition * 100) / Resolution, (dragEndPosition * 100) / Resolution);
+                dragDistance = Mathf.Clamp(dragDistance, 0, maxDragPercentage);
+                dragDirection = (dragStartPosition - dragEndPosition).normalized;
+                trajectory.UpdateDots(catapult.aim.transform.position, dragDirection * dragDistance * TrajectoryMultiplier);
+            }
+            if (Input.GetMouseButtonUp(0))
             {
                 isDragging = false;
                 trajectory.Hide();
-                if(dragDirection.x > 0 && dragDistance >15f)
+                if (dragDirection.x > 0 && dragDistance > 15f)
                 {
-                    catapult.CastProjectile(dragDirection, dragDistance );   
+                    catapult.CastProjectile(dragDirection, dragDistance);
                     catapult.CatLaunchAnimation();
 
                 }

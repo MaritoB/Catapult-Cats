@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using FMODUnity;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -9,9 +10,13 @@ public class EnemyBase : MonoBehaviour
     public float currentLife;
     public ParticleSystem ps;
     private GameManager gameManager;
+    private bool isDead;
+    [SerializeField]
+    private EventReference CrowSound;
     void Start()
     {
         currentLife = MaxLife;
+        isDead = false;
         gameManager = GameManager.Instance;
         StartCoroutine(AddEnemyCount());
     }
@@ -31,8 +36,9 @@ public class EnemyBase : MonoBehaviour
     public void ReciveDamage(float aDamage)
     {
         currentLife -= aDamage;
-        if (currentLife < 0)
+        if (currentLife < 0 && isDead==false)
         {
+            isDead = true;
             Die();
         }
     }
@@ -42,7 +48,7 @@ public class EnemyBase : MonoBehaviour
         ps.transform.position = body.transform.position;
         body.SetActive(false);
         ps.Emit(30);
-        //PlayDeathSound();
+        AudioManager.instance.PlayOneShot(CrowSound, transform.position);
         if (gameManager != null)
         {
             gameManager.EnemyKilled();

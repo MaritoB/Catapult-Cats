@@ -99,21 +99,21 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1012
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: 418.4
+        inSlope: -918.4
+        outSlope: -918.4
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: -500
+        inSlope: 1.0843871
+        outSlope: 1.0843871
+        tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0.38466126
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -361,21 +361,21 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 1012
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: 418.4
+        inSlope: -918.4
+        outSlope: -918.4
+        tangentMode: 34
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        value: -500
+        inSlope: 1.0843871
+        outSlope: 1.0843871
+        tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 0.38466126
         outWeight: 0.33333334
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -777,4 +777,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1
+    functionName: PlayTrophySound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2
+    functionName: PlayTrophySound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

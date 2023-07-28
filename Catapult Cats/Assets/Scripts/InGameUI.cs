@@ -5,14 +5,24 @@ using UnityEngine.UI;
 
 public class InGameUI : MonoBehaviour
 {
-    [SerializeField]  
+    [SerializeField]
     Image CurrentProjectileImage;
+    [SerializeField]
+    Image AddProjectileImage;
     Animator animator;
-    public TMPro.TextMeshProUGUI ShootsRemainingText;
+    [SerializeField]
+    TMPro.TextMeshProUGUI ShootsRemainingText, AddProjectileText;
     // Start is called before the first frame update
     void Start()
     {
         animator = GetComponent<Animator>();
+
+    }
+    public void AddProjectile(Sprite aSprite, int aNumber)
+    {
+        AddProjectileImage.sprite = aSprite;
+        AddProjectileText.text = "+" + aNumber.ToString();
+        animator.SetTrigger("AddProjectile");
 
     }
     public void ChangeProjectileImage(Sprite aSprite)

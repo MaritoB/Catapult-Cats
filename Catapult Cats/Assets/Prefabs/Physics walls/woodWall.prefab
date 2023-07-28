@@ -9910,18 +9910,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RockHitWoodSound:
     Guid:
-      Data1: -1555970951
-      Data2: 1253944409
-      Data3: -55120720
-      Data4: -1160430486
-    Path: event:/fx/madera
+      Data1: 367759565
+      Data2: 1289528068
+      Data3: -1006672746
+      Data4: -1105983331
+    Path: event:/fx/projectiles/impact/WoodImpact
+  MetalHitWoodSound:
+    Guid:
+      Data1: 367759565
+      Data2: 1289528068
+      Data3: -1006672746
+      Data4: -1105983331
+    Path: event:/fx/projectiles/impact/WoodImpact
+  FireHitWoodSound:
+    Guid:
+      Data1: 367759565
+      Data2: 1289528068
+      Data3: -1006672746
+      Data4: -1105983331
+    Path: event:/fx/projectiles/impact/WoodImpact
   FireBurningWoodSound:
     Guid:
       Data1: -375263817
       Data2: 1171234526
       Data3: -1415584838
       Data4: -1880867737
-    Path: event:/fx/fuego
+    Path: event:/fx/materials/wood/Ignite
   body: {fileID: 9078683150011001531}
   FireLight: {fileID: 2099382109281570692}
   fireParticles: {fileID: 6353041438377991226}
@@ -9931,7 +9945,7 @@ MonoBehaviour:
   SmokeParticles: {fileID: 2094599503447221515}
   IgniteTime: 4
   IgniteOthersTime: 1
-  IgniteRadius: 1
+  IgniteRadius: 2
   burningDamage: 3
 --- !u!1 &7303368952206083726
 GameObject:
@@ -14912,7 +14926,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.015047267, y: 0.0017182231}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -14923,7 +14937,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.33789364, y: 2.6875606}
+  m_Size: {x: 0.3, y: 2.6}
   m_EdgeRadius: 0
 --- !u!50 &5865048919302209921
 Rigidbody2D:

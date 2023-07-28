@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     Catapult catapult;
 
     [SerializeField]
-    private EventReference buttonPressedSound; 
+    private EventReference buttonPressedSound,WindSound;
     [SerializeField]
     private int levelNumber;
     public CameraController CameraController;
@@ -57,12 +57,16 @@ public class GameManager : MonoBehaviour
         {
             ParticleSystem.EmissionModule EmissionModule = WindPS.emission;
             ParticleSystem.ForceOverLifetimeModule WindForceModule = WindPS.forceOverLifetime;
-            EmissionModule.rateOverTimeMultiplier = Mathf.Abs(WindForce.x) * 10;
+            EmissionModule.rateOverTimeMultiplier = Mathf.Abs(WindForce.x);
             WindForceModule.x = WindForce.x;
             WindForceModule.y = WindForce.y;
+            if(WindForce.magnitude > 2)
+            {
+                AudioManager.instance.PlayOneShot(WindSound, this.transform.position);
+            }
         }
     }
-
+   
     public void AddEnemyCount()
     {
         totalEnemies++;
@@ -73,7 +77,7 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        Application.targetFrameRate = 60; // Establece el FPS máximo en 60
+        Application.targetFrameRate = 30;
         InitializeLevel();
         UIEndGamePanelAnimator = UIEndGame.GetComponent<Animator>();
     }
@@ -99,7 +103,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-
         if (!levelCompleted)
         {
             catapult.setCanShoot(false);
@@ -114,8 +117,9 @@ public class GameManager : MonoBehaviour
         if (PlayerPrefs.GetInt("ScoreLevel" + levelNumber) < starRating)
                     PlayerPrefs.SetInt("ScoreLevel" + levelNumber, starRating);
 
-      
-            PlayerPrefs.Save();
+
+        catapult.Save();
+        PlayerPrefs.Save();
     }
     public void ResetProgress()
     {
@@ -125,15 +129,10 @@ public class GameManager : MonoBehaviour
 
             PlayerPrefs.SetInt("ScoreLevel" + i, 0);
         }
-
-        PlayerPrefs.SetInt("SmallStone", 1);
-        PlayerPrefs.SetInt("MultipleProjectiles", 0);
-        PlayerPrefs.SetInt("BigStone", 0);
-        PlayerPrefs.SetInt("Fireball", 0);
-        PlayerPrefs.SetInt("Blade", 0);
         PlayerPrefs.SetInt("HigherLevelUnlocked", 1);
+        catapult.ResetProgress();
         PlayerPrefs.Save();
-        GoToLevelSelect();
+        GoToMainMenu();
     }
     public void EnemyKilled()
     {
@@ -184,11 +183,25 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadAsyncScene(SceneManager.GetActiveScene().name));
 
     }
+    public void AddAmmoToProjectile(int aProjectileIndex, int aAmmount, Sprite aSprite)
+    {
+        gameUI.AddProjectile(aSprite, aAmmount);
+        // Add ammo animation or text---
+        catapult.AddAmmoToProjectile(aProjectileIndex, aAmmount);
+
+    }
     public void GoToLevelSelect()
     {
         AudioManager.instance.PlayOneShot(buttonPressedSound, this.transform.position);
         UIEndGamePanelAnimator.SetTrigger("FadeOut");
         StartCoroutine(LoadAsyncScene("LevelSelection"));
+
+    }
+    public void GoToMainMenu()
+    {
+        AudioManager.instance.PlayOneShot(buttonPressedSound, this.transform.position);
+        UIEndGamePanelAnimator.SetTrigger("FadeOut");
+        StartCoroutine(LoadAsyncScene("MainMenu"));
 
     }
     IEnumerator LoadAsyncScene(string aScene)

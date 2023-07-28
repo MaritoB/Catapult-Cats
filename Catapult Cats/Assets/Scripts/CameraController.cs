@@ -6,6 +6,7 @@ using Cinemachine;
 public class CameraController : MonoBehaviour
 {
     public CinemachineVirtualCamera CatapultCamera, ProjectilCamera, CastleCamera;
+    public Cinemachine.CinemachineTargetGroup ProjectileGroup;
     private void Start()
     {
         TurnToCatapultCamera();
@@ -17,9 +18,17 @@ public class CameraController : MonoBehaviour
         ProjectilCamera.enabled = false;
         CastleCamera.enabled = false;
     }
-    public void SetFollowProjectile(GameObject aTransformProjectile)
+    public void SetFollowProjectile(Transform aNewProjectile)
     {
-        ProjectilCamera.Follow = aTransformProjectile.transform;
+        ProjectilCamera.Follow = aNewProjectile;
+        /*
+        if(aOldProjectile == aNewProjectile)
+        {
+            return;
+        }
+        ProjectileGroup.RemoveMember(aOldProjectile);
+        ProjectileGroup.AddMember(aNewProjectile, 1f, 10f);
+         */
     }
     public void TurnToProjectilCamera()
     {

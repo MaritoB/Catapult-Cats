@@ -11,9 +11,11 @@ public class AudioManager : MonoBehaviour
     {
         if(instance != null)
         {
-            Debug.LogError("found more than one audio manager in the scene.");
+            Destroy(gameObject);
+            return;
         }
         instance = this;
+        DontDestroyOnLoad(gameObject);
     }
     public void PlayOneShot(EventReference sound, Vector3 worldPos)
     {

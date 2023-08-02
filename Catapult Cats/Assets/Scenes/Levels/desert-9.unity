@@ -2224,7 +2224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: RockHitWoodSound.Path
-      value: event:/fx/materials/wood/ImpactWood
+      value: event:/fx/projectiles/impact/WoodImpact
       objectReference: {fileID: 0}
     - target: {fileID: 2963472156867736452, guid: 9403365b712638241a51d20860e29bac, type: 3}
       propertyPath: FireBurningWoodSound.Path
@@ -2707,7 +2707,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3781288180508071577, guid: c6202f07be36e774589123976ccbcd77, type: 3}
       propertyPath: buttonPressedSound.Path
-      value: event:/fx/click-level
+      value: event:/fx/UI/ClickLevel
       objectReference: {fileID: 0}
     - target: {fileID: 3781288180508071577, guid: c6202f07be36e774589123976ccbcd77, type: 3}
       propertyPath: buttonPressedSound.Guid.Data1

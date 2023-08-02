@@ -190,6 +190,14 @@ public class GameManager : MonoBehaviour
         catapult.AddAmmoToProjectile(aProjectileIndex, aAmmount);
 
     }
+    public void AddAmmoToRandomProjectile(int aAmmount)
+    {
+        int RandomIndex = Random.Range(0, catapult.Projectiles.Length);
+        gameUI.AddProjectile(catapult.Projectiles[RandomIndex].body.GetComponent<SpriteRenderer>().sprite, aAmmount);
+        // Add ammo animation or text---
+        catapult.AddAmmoToProjectile(RandomIndex, aAmmount);
+
+    }
     public void GoToLevelSelect()
     {
         AudioManager.instance.PlayOneShot(buttonPressedSound, this.transform.position);

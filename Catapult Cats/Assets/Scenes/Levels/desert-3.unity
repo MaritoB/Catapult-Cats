@@ -2163,7 +2163,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3781288180508071577, guid: c6202f07be36e774589123976ccbcd77, type: 3}
       propertyPath: buttonPressedSound.Path
-      value: event:/fx/click-level
+      value: event:/fx/UI/ClickLevel
       objectReference: {fileID: 0}
     - target: {fileID: 3781288180508071577, guid: c6202f07be36e774589123976ccbcd77, type: 3}
       propertyPath: buttonPressedSound.Guid.Data1

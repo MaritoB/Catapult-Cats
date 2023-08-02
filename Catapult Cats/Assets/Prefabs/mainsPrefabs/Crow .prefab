@@ -6248,7 +6248,7 @@ MonoBehaviour:
       Data2: 1264425084
       Data3: 1745688500
       Data4: -1930160711
-    Path: event:/fx/Characters/enemy/Crow
+    Path: event:/fx/characters/enemy/Crow/CrowDeath
 --- !u!1 &9081409969516134033
 GameObject:
   m_ObjectHideFlags: 0

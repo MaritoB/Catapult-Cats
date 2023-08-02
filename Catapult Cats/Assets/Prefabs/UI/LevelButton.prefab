@@ -232,7 +232,7 @@ MonoBehaviour:
       Data2: 1245392279
       Data3: -670753655
       Data4: 1309890354
-    Path: event:/fx/click-level
+    Path: event:/fx/UI/ClickLevel
   SceneName: desert-1
   levelNumber: 0
   Trophys:

@@ -420,7 +420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Path
-      value: event:/fx/click-level
+      value: event:/fx/UI/ClickLevel
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Guid.Data1
@@ -875,7 +875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Path
-      value: event:/fx/click-level
+      value: event:/fx/UI/ClickLevel
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Guid.Data1
@@ -1014,7 +1014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Path
-      value: event:/fx/click-level
+      value: event:/fx/UI/ClickLevel
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Guid.Data1
@@ -1143,7 +1143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Path
-      value: event:/fx/click-level
+      value: event:/fx/UI/ClickLevel
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Guid.Data1
@@ -1353,7 +1353,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Path
-      value: event:/fx/click-level
+      value: event:/fx/UI/ClickLevel
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Guid.Data1
@@ -1973,7 +1973,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Path
-      value: event:/fx/click-level
+      value: event:/fx/UI/ClickLevel
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Guid.Data1
@@ -2465,6 +2465,7 @@ GameObject:
   - component: {fileID: 1538810573}
   - component: {fileID: 1538810575}
   - component: {fileID: 1538810574}
+  - component: {fileID: 1538810576}
   m_Layer: 5
   m_Name: Player
   m_TagString: Untagged
@@ -2530,6 +2531,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538810572}
   m_CullTransparentMesh: 1
+--- !u!95 &1538810576
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1538810572}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ac45f519e07feee4f98f34c3de5fd977, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1554003994
 GameObject:
   m_ObjectHideFlags: 0
@@ -2865,7 +2887,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Path
-      value: event:/fx/click-level
+      value: event:/fx/UI/ClickLevel
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Guid.Data1
@@ -3075,7 +3097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Path
-      value: event:/fx/click-level
+      value: event:/fx/UI/ClickLevel
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Guid.Data1
@@ -3877,7 +3899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Path
-      value: event:/fx/click-level
+      value: event:/fx/UI/ClickLevel
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Guid.Data1
@@ -4007,7 +4029,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Path
-      value: event:/fx/click-level
+      value: event:/fx/UI/ClickLevel
       objectReference: {fileID: 0}
     - target: {fileID: 6419339612255634469, guid: 6c788aabeace6d24fa41be48fd3671c0, type: 3}
       propertyPath: buttonPressedSound.Guid.Data1

@@ -4918,6 +4918,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b50d91b2aff4f4345b738ebf0a8be719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RockHitWoodSound:
+    Guid:
+      Data1: 367759565
+      Data2: 1289528068
+      Data3: -1006672746
+      Data4: -1105983331
+    Path: event:/fx/projectiles/impact/WoodImpact
+  MetalHitWoodSound:
+    Guid:
+      Data1: 367759565
+      Data2: 1289528068
+      Data3: -1006672746
+      Data4: -1105983331
+    Path: event:/fx/projectiles/impact/WoodImpact
+  FireHitWoodSound:
+    Guid:
+      Data1: 367759565
+      Data2: 1289528068
+      Data3: -1006672746
+      Data4: -1105983331
+    Path: event:/fx/projectiles/impact/WoodImpact
+  FireBurningWoodSound:
+    Guid:
+      Data1: -375263817
+      Data2: 1171234526
+      Data3: -1415584838
+      Data4: -1880867737
+    Path: event:/fx/materials/wood/Ignite
   body: {fileID: 8769732406439564951}
   FireLight: {fileID: 2141458691756162418}
   fireParticles: {fileID: 8769732406348335445}
